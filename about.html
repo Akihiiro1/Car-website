@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Car Care Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #3b82f6, #10b981);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .glow-card {
+      transition: all 0.3s ease;
+    }
+    .glow-card:hover {
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+      transform: translateY(-5px);
+    }
+    .testimonial-card {
+      background: linear-gradient(135deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.9));
+      border-left: 4px solid #3b82f6;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2">
+            <div class="bg-blue-500 p-2 rounded-lg">
+              <i class="fas fa-tools text-white"></i>
+            </div>
+            <span class="text-white font-bold text-xl">Car Care <span class="gradient-text">Guide</span></span>
+          </a>
+        </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-center space-x-4">
+            <a href="about.html" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium">About Us</a>
+            <a href="maintenance.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Maintenance</a>
+            <a href="parts.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Parts & Tools</a>
+            <a href="contact.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+          </div>
+        </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-4 flex items-center md:ml-6">
+            <div class="relative">
+              <input type="text" placeholder="Search..." class="bg-gray-800 text-white px-4 py-1 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-64">
+              <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="-mr-2 flex md:hidden">
+          <button type="button" class="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <main class="flex-grow">
+    <section class="bg-gradient-to-r from-gray-900 to-gray-800 py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-10 md:mb-0">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">
+              About <span class="gradient-text">Car Care Guide</span>
+            </h1>
+            <p class="text-lg text-gray-300 mb-8">
+              Empowering car owners with professional knowledge to maintain and repair their vehicles with confidence.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#mission" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                Our Mission
+              </a>
+              <a href="#team" class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                Meet The Team
+              </a>
+            </div>
+          </div>
+          <div class="md:w-1/2">
+            <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mechanic working on car" class="rounded-xl shadow-2xl glow-card">
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="text-sm text-gray-400">
+        <a href="/" class="hover:text-white">Home</a> / <span class="text-blue-400">About Us</span>
+      </div>
+    </div>
+
+    <section id="mission" class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gray-900 rounded-xl p-8 md:p-12 shadow-xl glow-card">
+          <h2 class="text-3xl font-bold mb-8 gradient-text">Our Story</h2>
+          
+          <div class="space-y-6 text-gray-300">
+            <p class="text-lg leading-relaxed">
+              <span class="text-blue-400 font-medium">Car Care Guide</span> is a startup focused on providing how-to videos for your car that are high-quality, concise and completely free. We believe that many people would take better care of their cars if only they knew how.
+            </p>
+            
+            <p class="text-lg leading-relaxed">
+              Our team of <span class="text-green-400 font-medium">Holy Crossian Project</span> creates professional how-to videos that show drivers exactly how to maintain and repair their vehicles. This helps users drive vehicles that last longer, perform better, and are more efficient.
+            </p>
+            
+            <p class="text-lg leading-relaxed">
+              Our community tells us that our videos empowered them to do things they were curious about but were too afraid or embarrassed to ask for help... more importantly, they tell us that they <span class="text-yellow-300 font-medium">had fun</span> fixing their car and that our videos <span class="text-green-400 font-medium">saved them serious money</span>.
+            </p>
+            
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="bg-gray-800 p-6 rounded-lg">
+                <div class="text-blue-400 text-4xl mb-4">
+                  <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Founded</h3>
+                <p class="text-gray-400">In 2025 with a vision to democratize car repair knowledge</p>
+              </div>
+              
+              <div class="bg-gray-800 p-6 rounded-lg">
+                <div class="text-green-400 text-4xl mb-4">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Community</h3>
+                <p class="text-gray-400">Helping thousands of car owners worldwide every day</p>
+              </div>
+              
+              <div class="bg-gray-800 p-6 rounded-lg">
+                <div class="text-yellow-400 text-4xl mb-4">
+                  <i class="fas fa-handshake"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Partners</h3>
+                <p class="text-gray-400">Trusted by leading brands in the automotive industry</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold mb-12 text-center gradient-text">Meet Our Team</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg glow-card">
+            <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494822080_2069296663580084_8751086765263072121_n.jpg?stp=dst-jpg_s2048x2048_tt6&_nc_cat=100&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeHfpTFNQlXZUDafdmsRiN6UlGHjzCR38O2UYePMJHfw7cRQ9QtZXLdbwn_Dd-gnC-mtlqCh3KL0228SHe4zCYhj&_nc_ohc=e_q1_cAmEmsQ7kNvwFIHGHr&_nc_oc=AdkvVbhb03R0KQ6Ukg0luqX5MnRsmERUTMh7EALhQmJS-n0TG14QY0242AaT_0H7u_0&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QElWuTjUsCL1NdRsmCeDQ1qtnHd4KWL9zMSp3hJ7gIbAg&oe=6845B226" alt="Team Member" class="w-full h-64 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-1">Tadashi Yamagami</h3>
+              <p class="text-blue-400 mb-3">Founder & CEO</p>
+              <p class="text-gray-400 text-sm">Serving as the Ambassador, he leads the Group's initiatives.</p>
+            </div>
+          </div>
+          
+          <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg glow-card">
+            <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494819132_1679368799352596_7493571594721495606_n.jpg?stp=dst-jpg_s2048x2048_tt6&_nc_cat=102&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeFrIeuisAIwgQr7p1lMuF6nKWjFGc9hhagpaMUZz2GFqBGytpgz1ZARhVn9njpSn0OtcZn05JxV5hdkrACXic6H&_nc_ohc=i8QyG7PY1qkQ7kNvwHym_QN&_nc_oc=AdmGq3f1zHAynqnoZjdOXLo5NjShXrI3GC-OUkirZqTArPI7baroGFbYcW-k4TBZBNY&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QFbpxMidMYXx8BeHAtl8jQCOLrHPfpLQlA4KcqwpCoCOw&oe=68459177" alt="Team Member" class="w-full h-64 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-1">Delmar Sosmena</h3>
+              <p class="text-green-400 mb-3">Content Director</p>
+              <p class="text-gray-400 text-sm">A former video editor on TikTok gained millions of views.</p>
+            </div>
+          </div>
+          
+          <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg glow-card">
+            <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494357093_665870669678228_3746934892385424836_n.jpg?stp=dst-jpg_s2048x2048_tt6&_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeFHupeyMx7IdSbiQ7wxfxsqdWLMoWssRgJ1YsyhayxGAk8ORM9_5wqg6Z84CN-e1YoRvIQ_9y16CikEWQNcgsLW&_nc_ohc=F5SavfnRlKcQ7kNvwEfrjm0&_nc_oc=AdnvWYaQ0hYKysrQ0ro2X_nRdI_PR5v7f2xGLdWSJMExr99e4Kd7HiPcZcdL5hYPkb8&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QGwDm61zc95WlcWn4hyh6b41lOEVHa4fNAKLEs-X_hHZQ&oe=6845BE58" alt="Team Member" class="w-full h-64 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-1">Kwi Jung Han</h3>
+              <p class="text-yellow-400 mb-3">Lead Technician</p>
+              <p class="text-gray-400 text-sm">He is the motor expert of the group and has no impact on the content.</p>
+            </div>
+          </div>
+          
+          <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg glow-card">
+            <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494334822_1795311714381312_2889583575605843289_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGqRpSklvzHGKCgNMNshCL2kTXrv8dlxLCRNeu_x2XEsErr4FFT0ne_29DLVK8vtYd44CE4MfeE1nx2FhDRpt47&_nc_ohc=6_4yNt_Pl3EQ7kNvwEr4IN8&_nc_oc=AdmMcy2gAyZnb22bH2v6ruYtyc7_uv2gv6feEd-gYg6mERjkeO3mio_a84UdejfQlto&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QEcoJTiktMyAawVyPb8vpzZ4vxhQYFMUTOSXU4NKLYdrw&oe=68458B0D" alt="Team Member" class="w-full h-64 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-1">Paul Tarranza</h3>
+              <p class="text-purple-400 mb-3">Tech & Innovation</p>
+              <p class="text-gray-400 text-sm">Once an athlete, he decided to be a low-class mechanic and Samal Owner.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold mb-12 text-center gradient-text">What Our Community Says</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="testimonial-card p-8 rounded-lg">
+            <div class="flex items-center mb-4">
+              <div class="text-yellow-400 text-xl mr-2">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+            <p class="text-gray-300 italic mb-6">
+              "Sukad ni tabang ko sakong leader gikapoy pud kog code huhu"
+            </p>
+            <div class="flex items-center">
+              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494833911_1718950845362238_4263257264327312155_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=107&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeHJLLYsue29iu2nT7gDVv_ZSnHG4Qi_AmRKccbhCL8CZIETzjvL9G91w_ETEIXl1jRaALGVevcd9VKrJHzb-lAg&_nc_ohc=_lHK2bTn00QQ7kNvwEqIgx5&_nc_oc=Admq3HB_0Y_CmsCHY-AInZ5-c13EhM0-y2e-19W8_xL0eF1In7IdMUeBq2TaVAWsNoI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QF0iyOHg4vQ0rP2u8XXBoMtCfKw-H3BLxplDe-SkhdTsQ&oe=6846B96C" alt="User" class="w-10 h-10 rounded-full mr-3">
+              <div>
+                <h4 class="font-bold">Anadon Joseph</h4>
+                <p class="text-sm text-gray-400">Tricyle Owner</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card p-8 rounded-lg">
+            <div class="flex items-center mb-4">
+              <div class="text-yellow-400 text-xl mr-2">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+            <p class="text-gray-300 italic mb-6">
+              "MAKA GRADUATE TANG TANAN!"
+            </p>
+            <div class="flex items-center">
+              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494579113_1003938445231287_7954492913408924031_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeHY_FKIRy--XAjRmWYSLjivFpPMzHUlxT0Wk8zMdSXFPeuewo5QptTEL77E6DQmK4rmRHeCKuijJyDhXwtBa98b&_nc_ohc=Ya5QmKncvZ4Q7kNvwE-wV1Z&_nc_oc=Adn3hSQ4fqa3RY9hRhLr_VyJAIAeugheEYxjT1bTcODeInNzxPcC0MGKg5EUa1G1znU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QFS56r_lkwRlCxmtMJMCL1GXJtllflGRIfj_dJ98rjHdg&oe=6846DC55" alt="User" class="w-10 h-10 rounded-full mr-3">
+              <div>
+                <h4 class="font-bold">Rihard Emmanuel.</h4>
+                <p class="text-sm text-gray-400">Banana Boat Owner</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gradient-to-r from-gray-900 to-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold mb-6">Ready to Start Your Car Care Journey?</h2>
+        <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          Join thousands of car owners who are saving money and gaining confidence by maintaining their own vehicles.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="maintenance.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition duration-300">
+            Browse Tutorials
+          </a>
+          <a href="contact.html" class="bg-gray-700 hover:bg-gray-600 text-white px-8 py-3 rounded-lg font-medium transition duration-300">
+            Contact Our Team
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <a href="/" class="flex items-center space-x-2">
+            <div class="bg-blue-500 p-2 rounded-lg">
+              <i class="fas fa-tools text-white"></i>
+            </div>
+            <span class="text-white font-bold text-xl">Car Care <span class="gradient-text">Guide</span></span>
+          </a>
+          <p class="mt-4 text-gray-400">
+            Empowering car owners with professional knowledge since 2025.
+          </p>
+          <div class="flex space-x-4 mt-6">
+            <a href="#" class="text-gray-400 hover:text-white">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-white font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+            <li><a href="maintenance.html" class="text-gray-400 hover:text-white">Maintenance Guides</a></li>
+            <li><a href="parts.html" class="text-gray-400 hover:text-white">Parts & Tools</a></li>
+            <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-white font-bold mb-4">Resources</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">FAQs</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">Community Forum</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">Glossary</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-white font-bold mb-4">Newsletter</h3>
+          <p class="text-gray-400 mb-4">
+            Subscribe to get tips and tutorials delivered to your inbox.
+          </p>
+          <form class="flex">
+            <input type="email" placeholder="Your email" class="bg-gray-800 text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-blue-500 w-full">
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-r-lg">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400">
+          &copy; 2025 Car Care Guide. All rights reserved.
+        </p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuButton = document.querySelector('[aria-controls="mobile-menu"]');
+      const mobileMenu = document.createElement('div');
+      mobileMenu.id = 'mobile-menu';
+      mobileMenu.className = 'hidden md:hidden bg-gray-900 px-4 py-2';
+      
+      const menuLinks = [
+        {text: 'About Us', href: 'about.html', active: true},
+        {text: 'Maintenance', href: 'maintenance.html'},
+        {text: 'Parts & Tools', href: 'parts.html'},
+        {text: 'Contact', href: 'contact.html'}
+      ];
+      
+      menuLinks.forEach(link => {
+        const a = document.createElement('a');
+        a.href = link.href;
+        a.className = 'block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700';
+        a.textContent = link.text;
+        if (link.active) a.className += ' bg-gray-800';
+        mobileMenu.appendChild(a);
+      });
+      
+      document.body.appendChild(mobileMenu);
+      
+      mobileMenuButton.addEventListener('click', function() {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
