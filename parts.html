@@ -47,28 +47,13 @@
       position: relative;
     }
     
-    .search-container:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #3b82f6;
-      transition: width 0.3s ease;
-    }
-    
-    .search-container:focus-within:after {
-      width: 100%;
-    }
-    
     body {
       background-color: #111827;
       color: #e5e7eb;
     }
     
     .header-bg {
-      background-color: #1f2937;
+      background-color: #0f172a;
       border-bottom: 1px solid #374151;
     }
     
@@ -76,11 +61,13 @@
       background-color: #1f2937;
       color: white;
       border-color: #374151;
+      transition: all 0.3s ease-in-out;
     }
     
     input:focus {
       outline: none;
       border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(11, 171, 245, 0.3);
     }
     
     .part-image-container {
@@ -216,14 +203,16 @@
           <li><a href="contact.html" class="px-3 py-2 text-gray-300 hover:text-blue-400 transition">Contact</a></li>
         </ul>
         
-        <div class="search-container relative w-full md:w-64 ml-0 md:ml-4">
-          <input type="text" id="search-input" placeholder="Search parts & tools"
-                  class="w-full pl-4 pr-10 py-2 rounded-lg focus:outline-none">
-          <button id="search-button" class="absolute right-3 top-2 text-gray-400 hover:text-blue-400">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
+        <div class="hidden md:block">
+  <div class="ml-4 flex items-center md:ml-6">
+    <div class="relative">
+      <input type="text" placeholder="Search..." class="bg-gray-800 text-white px-4 py-1 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-64">
+      <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+</div>
     </nav>
   </header>
 
@@ -282,7 +271,7 @@
         <div id="battery-category" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="battery power charging electrical">
             <div class="part-image-container">
-              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494359035_629718503390917_8532376704535884478_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeHPiVyfmOSCiUssuIylEFP3PUI-O_mcwMk9Qj47-ZzAydDj4uJhM7Urr1ROOAVd6_OfmIpWFSega0ul5H4FsKEo&_nc_ohc=ZPbXpFO9U4YQ7kNvwFKyaAL&_nc_oc=Adm9rIZjWyt772RLgFR02P5QzmdlqLVYC3weO69ytODgR2zbR1UOa9NsumUvtqyO9O8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QEAzJq_dOYNFW4ajNaG7V7s3KfNUXA0E6gKth8wChmBgw&oe=6846C54C" alt="Car Battery" class="part-image">
+              <img src="img/optima.webp" alt="Car Battery" class="part-image">
             </div>
             <div class="p-5">
               <div class="part-brands">
@@ -337,7 +326,7 @@
           
           <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="battery charger power">
             <div class="part-image-container">
-              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494820314_1273673100843943_1001659310990938591_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeEVJ33VwkJpdfZCX_3tvqwFpZbmgFrDMeWlluaAWsMx5cXilVjXrlA_0yaj4-VOPFjGIgNtVNLtRrStV1te2cdr&_nc_ohc=IkGz9nUu9j4Q7kNvwFxg0Tb&_nc_oc=Adnij3cTWQon9aw4fA0wz4jMQMktiujgi2qPK9uRqAP9IB51lr5LYOPcADDNz8cHYk8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QEVqYcchS5f4Mp7rNBVV3JBSi8ipoliCNzDjZctXUOK6Q&oe=6846D518" alt="Battery Charger" class="part-image">
+              <img src="img/noco.jpg" alt="Battery Charger" class="part-image">
             </div>
             <div class="p-5">
               <div class="part-brands">
@@ -392,7 +381,7 @@
           
           <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="code reader scanner diagnostic">
             <div class="part-image-container">
-              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494821773_2883605578480784_7342004639159215322_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeFnmr1ikHJ9e7irkzLZht_7BULdpLuDztIFQt2ku4PO0k2evgy6OwA0tj2Hk05h8XaYXil7wfhq5DLxeMhJwsOh&_nc_ohc=aG0CIhRC55IQ7kNvwGqSgNb&_nc_oc=AdkQL0qb--vtVzg0THhLInykltyKL7KEkjJvMexBmSCmITmfxGd6Jdj3gKzkT_nUxeA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QEVd8zQRAaml6u5FXmlHUWYmGKXOTTiJP-iRFl0Egf9jA&oe=6846E488" alt="Code Reader" class="part-image">
+              <img src="img/bluedriver.jpg" alt="Code Reader" class="part-image">
             </div>
             <div class="p-5">
               <div class="part-brands">
@@ -447,7 +436,7 @@
           
           <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="jumper cables emergency">
             <div class="part-image-container">
-              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494818366_1284674046321586_2486894933470306871_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeFUzVt_BYwWdrDDUqZpWfgxwDRBwCaqRcrANEHAJqpFyuoE7wWMtUXyd4XxZxB7EhqeKVCNW9LFS5zP2oY06EEy&_nc_ohc=DkvzNDNGiS0Q7kNvwE6Ep1K&_nc_oc=AdmVJgRdujAvBm8cTir7uxIBkPKqKntXHRSCUimTpy3D0c1C4JtzS-yFtnMgYYqmZEU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QFBjeliM0UcIlbaKxsqc4MkUCcxJ0fnwHZQFvu81Ctlcg&oe=6846C7A7" alt="Jumper Cables" class="part-image">
+              <img src="img/cartman.jpg" alt="Jumper Cables" class="part-image">
             </div>
             <div class="p-5">
               <div class="part-brands">
@@ -514,7 +503,7 @@
         <div id="belts-category" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="serpentine timing belt drive">
             <div class="part-image-container">
-              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494858466_1899252180818817_4707355107847294930_n.jpg?stp=dst-jpg_s2048x2048_tt6&_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeEUW7Qpru9mR2d4LZ9-qXupw6VWGQDenWrDpVYZAN6dajdfsZ0dZNa_HQrnRZ3C_WAzGNYhEtSed09oCZRe3hAH&_nc_ohc=Y7yvEiVMHQwQ7kNvwGEODuM&_nc_oc=AdklB-8OOSJnGpYwF9CWjF9Gxx3Sg7uueG6-bPdMVy3V2O0ru1bN0jagPvpHy3D40jY&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QHyyDN-REKpJF5BEI1V5s4ev7xtueO7z8kRSh73TJhaiw&oe=6846BAAD" alt="Serpentine Belt" class="part-image">
+              <img src="img/gates micro-v.jpg" alt="Serpentine Belt" class="part-image">
             </div>
             <div class="p-5">
               <div class="part-brands">
@@ -569,7 +558,7 @@
           
           <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="timing belt engine">
             <div class="part-image-container">
-              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494818343_544349888511398_3732203287880855877_n.png?_nc_cat=102&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGY8tknCqmwyc0lOD15zYULCHfeKwu0GmoId94rC7QaakAqsGpCpy5tEZ_nFDaUTZ8FipnLDgNiU6fR9N7BXQeh&_nc_ohc=OWJrnIVumf8Q7kNvwHI0O41&_nc_oc=AdlgqsBMDDfyUf-sqMWstBEQNGeIBotK0B1MaNg1qXVBOe5CiGi5CWzjulszcWP_ASg&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QGTnhu2EfPBrG5_tNs3ZYApUNgMFyfqemHjYeUDJ3IqTw&oe=6846D959" alt="Timing Belt" class="part-image">
+              <img src="img/tming belt.jpg" alt="Timing Belt" class="part-image">
             </div>
             <div class="p-5">
               <div class="part-brands">
@@ -624,7 +613,7 @@
           
           <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="radiator coolant hose">
             <div class="part-image-container">
-              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494858254_676588932198216_8304953188296837599_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeHCt3uP6Ombzrzc11J3zTXBy5mHiVk0KhbLmYeJWTQqFhnO0o1ikxwL0j8Z0xfY_jBI6W37RSTmR18Mc7DUgKjo&_nc_ohc=8GMSDenpqcQQ7kNvwEZIqMy&_nc_oc=Adl-PeTLPY4JUf6krV4l3itSoXlG5eELsHY9rNbg1eZ6lp9EOHNYy2w-joxub9ESbVM&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QHVXFciyVAQ4LmTBfov6SXuuGSrdLH8c0STRsANzN_nYg&oe=6846CB82" alt="Radiator Hoses" class="part-image">
+              <img src="img/gates hose set.jfif" alt="Radiator Hoses" class="part-image">
             </div>
             <div class="p-5">
               <div class="part-brands">
@@ -679,7 +668,7 @@
           
           <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="hose clamps fasteners">
             <div class="part-image-container">
-              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494813958_998683272382189_605610183754390647_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeEWBZ-jzbiM9DAi3Lmbi5vOFcoI9jqqcYMVygj2Oqpxgx3kFVoUhQG6LC7XzBtQEFI3pwHUuhDIkKaSNZ4Wxs1J&_nc_ohc=w3GoKL3NMikQ7kNvwFUrHtg&_nc_oc=AdmjQkmfqBMK6lP3CAFwy0frnrSEHgCjLNK9bZyJzst1Vpo_JDK9s0RXtAk7wjHWOjU&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QFMBkTYIimx4RuwJXvo5OQShXuSFheSprgtQ9SZjUYvQQ&oe=6846CD01" alt="Hose Clamps" class="part-image">
+              <img src="img/hose clamps.jpg" alt="Hose Clamps" class="part-image">
             </div>
             <div class="p-5">
               <div class="part-brands">
@@ -746,7 +735,7 @@
         <div id="brakes-category" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="brake pads stopping">
             <div class="part-image-container">
-              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494812982_711871997981707_7524654051830321141_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeGxu8Vpzd7T58fwa9_UBoW8RfIwIA2eUZdF8jAgDZ5Rl_2YZvZLDiEXs2Wb8GeV9CZeWnkoJDgCXtol26HgNmq6&_nc_ohc=WDNrPHiZADcQ7kNvwEkmcmc&_nc_oc=AdkD9909rHJ6Qj1sLY3rcJ8NL_2fXp1wZvnRbMMgjMB-x5W7OBlYolTzr2oLxCxTqbA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QGocP5wfnB_FAFSNBRNLYQ5AsqoS32qBsl0TYxQRA1mwA&oe=6846BFFB" alt="Brake Pads" class="part-image">
+              <img src="img/brake pads.jpg" alt="Brake Pads" class="part-image">
             </div>
             <div class="p-5">
               <div class="part-brands">
@@ -801,7 +790,7 @@
           
           <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="brake rotors discs">
             <div class="part-image-container">
-              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494857301_2707558309455292_6315054755660858813_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=109&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeEK7yayUhkqcjPpFQUSw0fRKi9ggmiYaZwqL2CCaJhpnJ2MLEQm3K1ekxXpjmMk0GEAV4OxZ2i02W-3rTVKGI_G&_nc_ohc=3x7F7ghsxzIQ7kNvwEgfQc2&_nc_oc=Adn0l6D7Du_6wFNPFK0gEm2umEQXC5ykTWmqIoRlDUSpTc9oK460tRyQeDofDqWF1fM&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QFT2iYH-Ca2Wz6XcSMm4C3q7Garo07tckXKMej9dQaLhg&oe=6846C3A6" alt="Brake Rotors" class="part-image">
+              <img src="img/centric brake rotors.jpg" alt="Brake Rotors" class="part-image">
             </div>
             <div class="p-5">
               <div class="part-brands">
@@ -856,7 +845,7 @@
           
           <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="brake caliper hydraulic">
             <div class="part-image-container">
-              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494814726_2465098420537351_3689962349169715638_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeGVY9kn_icus0w8tucHVrR9DvyMoQDFdNMO_IyhAMV003p7NLrIHpKhxVCmcLs3p03Lb94aJ_rgCYCrnHkEDp8j&_nc_ohc=o_INsaVw5hMQ7kNvwEMQFnx&_nc_oc=AdkiljaIErXerZF6CPR7G__NHFTWIV95S5PPhOi1A8ZKRoBrnrWyYIodYYcuaq3CPzs&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QHBpsUtyrpmmAkNeYLEJ3_2UElAcIVO6KsVbIB8q0ndBA&oe=6846DCF6" alt="Brake Calipers" class="part-image">
+              <img src="img/ACDelco.jpg" alt="Brake Calipers" class="part-image">
             </div>
             <div class="p-5">
               <div class="part-brands">
@@ -911,7 +900,7 @@
           
           <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="brake fluid dot">
             <div class="part-image-container">
-              <img src="https://scontent.fdvo8-1.fna.fbcdn.net/v/t1.15752-9/494812982_711871997981707_7524654051830321141_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeGxu8Vpzd7T58fwa9_UBoW8RfIwIA2eUZdF8jAgDZ5Rl_2YZvZLDiEXs2Wb8GeV9CZeWnkoJDgCXtol26HgNmq6&_nc_ohc=WDNrPHiZADcQ7kNvwEkmcmc&_nc_oc=AdkD9909rHJ6Qj1sLY3rcJ8NL_2fXp1wZvnRbMMgjMB-x5W7OBlYolTzr2oLxCxTqbA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdvo8-1.fna&oh=03_Q7cD2QGxRtQmYVTq2s3SRjeOy1xPCkm_rQgqI4RiwIBnl1m7tw&oe=6846F83B" alt="Brake Fluid" class="part-image">
+              <img src="img/motul.jpeg" alt="Brake Fluid" class="part-image">
             </div>
             <div class="p-5">
               <div class="part-brands">
@@ -974,7 +963,7 @@
           <p class="opacity-90">Subscribe to our newsletter for special discounts on tools and parts.</p>
         </div>
         <div class="flex w-full md:w-auto">
-          <input type="email" placeholder="Your email address" class="px-4 py-3 rounded-l-lg w-full md:w-64 text-gray-900 focus:outline-none">
+          <input type="email" placeholder="Your email address" class="px-4 py-3 rounded-l-lg w-full md:w-64 text-white-900 focus:outline-none">
           <button class="bg-blue-700 px-6 py-3 rounded-r-lg font-medium hover:bg-blue-800 transition">
             Subscribe
           </button>

@@ -83,6 +83,13 @@
   flex: 1;
 }
 
+.input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  border-radius: 50px;
+  box-shadow: 0 0 0 3px rgba(11, 171, 245, 0.3);
+}
+
 .buy-options {
   margin-top: auto;
   display: flex;
