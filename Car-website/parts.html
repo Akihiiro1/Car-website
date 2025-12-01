@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parts & Tools - Car Care Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.3s ease forwards;
+    }
+    
+    .category-toggle {
+      transition: all 0.3s ease;
+    }
+    
+    .category-toggle:hover {
+      transform: translateX(5px);
+    }
+    
+    .part-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .part-card {
+      transition: all 0.3s ease;
+      background: #1f2937;
+      border: 1px solid #374151;
+    }
+    
+    .buy-button {
+      transition: all 0.2s ease;
+    }
+    
+    .buy-button:hover {
+      transform: scale(1.03);
+    }
+    
+    .search-container {
+      position: relative;
+    }
+    
+    body {
+      background-color: #111827;
+      color: #e5e7eb;
+    }
+    
+    .header-bg {
+      background-color: #0f172a;
+      border-bottom: 1px solid #374151;
+    }
+    
+    input {
+      background-color: #1f2937;
+      color: white;
+      border-color: #374151;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    input:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(11, 171, 245, 0.3);
+    }
+    
+    .part-image-container {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .part-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #1f2937;
+      padding: 20px;
+    }
+    
+    .part-brands {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    
+    .brand-badge {
+      background-color: #374151;
+      color: #9ca3af;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    
+    .part-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    
+    .spec-badge {
+      background-color: #1e40af;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    
+    .price-container {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+    
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #3b82f6;
+    }
+    
+    .original-price {
+      text-decoration: line-through;
+      color: #9ca3af;
+      margin-left: 8px;
+      font-size: 14px;
+    }
+    
+    .discount-badge {
+      background-color: #10b981;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-left: 8px;
+    }
+    
+    .rating {
+      display: flex;
+      align-items: center;
+      margin-top: 8px;
+    }
+    
+    .stars {
+      color: #f59e0b;
+      margin-right: 6px;
+    }
+    
+    .review-count {
+      color: #9ca3af;
+      font-size: 14px;
+    }
+    
+    .part-details {
+      margin-top: 12px;
+      color: #9ca3af;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    .part-features {
+      margin-top: 12px;
+      padding-left: 16px;
+    }
+    
+    .part-feature {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #9ca3af;
+    }
+    
+    .part-feature:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #3b82f6;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans">
+  <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2">
+            <div class="bg-blue-500 p-2 rounded-lg">
+              <i class="fas fa-tools text-white"></i>
+            </div>
+            <span class="text-white font-bold text-xl">Car Care <span class="gradient-text">Guide</span></span>
+          </a>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-center space-x-4">
+            <a href="about.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About Us</a>
+            <a href="maintenance.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Maintenance</a>
+            <a href="parts.html" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium">Parts & Tools</a>
+            <a href="contact.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+          </div>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-4 flex items-center md:ml-6">
+            <div class="relative">
+              <input type="text" placeholder="Search..." class="bg-gray-800 text-white px-4 py-1 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-64">
+              <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="-mr-2 flex md:hidden">
+          <button type="button" class="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <main class="container mx-auto px-4 py-8">
+    <div class="text-sm text-gray-400 mb-6 flex items-center">
+      <a href="/" class="text-blue-400 hover:underline">Home</a>
+      <span class="mx-2">/</span>
+      <span class="text-gray-300">Parts & Tools</span>
+    </div>
+    
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-100 mb-4 md:mb-0">Essential Parts & Tools</h1>
+      <div class="flex space-x-2">
+        <button id="filter-btn" class="px-4 py-2 bg-gray-800 text-blue-400 rounded-lg hover:bg-gray-700 transition">
+          <i class="fas fa-filter mr-2"></i>Filter
+        </button>
+        <button id="sort-btn" class="px-4 py-2 bg-gray-800 text-gray-300 rounded-lg hover:bg-gray-700 transition">
+          <i class="fas fa-sort mr-2"></i>Sort
+        </button>
+      </div>
+    </div>
+    
+    <div id="filter-dropdown" class="hidden mb-8 bg-gray-800 p-4 rounded-lg border border-gray-700">
+      <h3 class="font-medium text-gray-300 mb-3">Filter by Category</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <label class="flex items-center text-gray-300">
+          <input type="checkbox" class="form-checkbox text-blue-500 mr-2" checked>
+          <span>Battery & Electrical</span>
+        </label>
+        <label class="flex items-center text-gray-300">
+          <input type="checkbox" class="form-checkbox text-blue-500 mr-2" checked>
+          <span>Belts & Hoses</span>
+        </label>
+        <label class="flex items-center text-gray-300">
+          <input type="checkbox" class="form-checkbox text-blue-500 mr-2" checked>
+          <span>Brakes</span>
+        </label>
+        <label class="flex items-center text-gray-300">
+          <input type="checkbox" class="form-checkbox text-blue-500 mr-2" checked>
+          <span>Engine Parts</span>
+        </label>
+      </div>
+    </div>
+    
+    <section class="mb-12">
+      <div class="category-section mb-10">
+        <div class="flex items-center justify-between mb-6 cursor-pointer category-toggle" onclick="toggleCategory('battery')">
+          <h2 class="text-2xl font-semibold text-gray-100 flex items-center">
+            <i class="fas fa-bolt text-yellow-400 mr-3"></i>
+            Battery & Electrical Care
+          </h2>
+          <i id="battery-arrow" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+        </div>
+        
+        <div id="battery-category" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="battery power charging electrical">
+            <div class="part-image-container">
+              <img src="img/optima.webp" alt="Car Battery" class="part-image">
+            </div>
+            <div class="p-5">
+              <div class="part-brands">
+                <span class="brand-badge">Optima</span>
+                <span class="brand-badge">RedTop</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-100 mb-2">OPTIMA RedTop Battery</h3>
+              
+              <div class="rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="review-count">(1,245 reviews)</span>
+              </div>
+              
+              <div class="price-container">
+                <span class="price">₱1249.99</span>
+                <span class="original-price">₱2279.99</span>
+                <span class="discount-badge">11% OFF</span>
+              </div>
+              
+              <div class="part-specs">
+                <span class="spec-badge">12V</span>
+                <span class="spec-badge">800 CCA</span>
+                <span class="spec-badge">SpiralCell</span>
+              </div>
+              
+              <div class="part-details">
+                High-performance AGM battery with superior starting power even in extreme conditions.
+              </div>
+              
+              <div class="part-features">
+                <div class="part-feature">15 times more resistant to vibration</div>
+                <div class="part-feature">Maintenance-free design</div>
+                <div class="part-feature">Works in any position</div>
+              </div>
+              
+              <div class="flex flex-col space-y-2 mt-4">
+                <a href="#" class="buy-button px-4 py-2 bg-orange-500 text-white rounded-lg text-center hover:bg-orange-600">
+                  <i class="fab fa-amazon mr-2"></i> Buy on Amazon
+                </a>
+                <a href="#" class="buy-button px-4 py-2 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700">
+                  <i class="fas fa-store mr-2"></i> Buy at Advance Auto
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="battery charger power">
+            <div class="part-image-container">
+              <img src="img/noco.jpg" alt="Battery Charger" class="part-image">
+            </div>
+            <div class="p-5">
+              <div class="part-brands">
+                <span class="brand-badge">NOCO</span>
+                <span class="brand-badge">Genius</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-100 mb-2">NOCO Genius10 Charger</h3>
+              
+              <div class="rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span class="review-count">(3,782 reviews)</span>
+              </div>
+              
+              <div class="price-container">
+                <span class="price">₱999.95</span>
+                <span class="original-price">₱1129.95</span>
+                <span class="discount-badge">23% OFF</span>
+              </div>
+              
+              <div class="part-specs">
+                <span class="spec-badge">10A</span>
+                <span class="spec-badge">6V/12V</span>
+                <span class="spec-badge">AGM/Gel</span>
+              </div>
+              
+              <div class="part-details">
+                Advanced battery charger with repair mode for desulfation and battery recovery.
+              </div>
+              
+              <div class="part-features">
+                <div class="part-feature">Spark-proof technology</div>
+                <div class="part-feature">Reverse polarity protection</div>
+                <div class="part-feature">Weather-resistant design</div>
+              </div>
+              
+              <div class="flex flex-col space-y-2 mt-4">
+                <a href="#" class="buy-button px-4 py-2 bg-orange-500 text-white rounded-lg text-center hover:bg-orange-600">
+                  <i class="fab fa-amazon mr-2"></i> Buy on Amazon
+                </a>
+                <a href="#" class="buy-button px-4 py-2 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700">
+                  <i class="fas fa-store mr-2"></i> Buy at Advance Auto
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="code reader scanner diagnostic">
+            <div class="part-image-container">
+              <img src="img/bluedriver.jpg" alt="Code Reader" class="part-image">
+            </div>
+            <div class="p-5">
+              <div class="part-brands">
+                <span class="brand-badge">BlueDriver</span>
+                <span class="brand-badge">LXi</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-100 mb-2">BlueDriver Bluetooth Scanner</h3>
+              
+              <div class="rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="review-count">(12,540 reviews)</span>
+              </div>
+              
+              <div class="price-container">
+                <span class="price">₱899.99</span>
+                <span class="original-price">₱1119.99</span>
+                <span class="discount-badge">17% OFF</span>
+              </div>
+              
+              <div class="part-specs">
+                <span class="spec-badge">Bluetooth</span>
+                <span class="spec-badge">iOS/Android</span>
+                <span class="spec-badge">ABS/SRS</span>
+              </div>
+              
+              <div class="part-details">
+                Professional-grade OBD2 scanner that connects to your smartphone via Bluetooth.
+              </div>
+              
+              <div class="part-features">
+                <div class="part-feature">Reads ABS & Airbag codes</div>
+                <div class="part-feature">Free lifetime updates</div>
+                <div class="part-feature">Live data graphing</div>
+              </div>
+              
+              <div class="flex flex-col space-y-2 mt-4">
+                <a href="#" class="buy-button px-4 py-2 bg-orange-500 text-white rounded-lg text-center hover:bg-orange-600">
+                  <i class="fab fa-amazon mr-2"></i> Buy on Amazon
+                </a>
+                <a href="#" class="buy-button px-4 py-2 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700">
+                  <i class="fas fa-store mr-2"></i> Buy at Advance Auto
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="jumper cables emergency">
+            <div class="part-image-container">
+              <img src="img/cartman.jpg" alt="Jumper Cables" class="part-image">
+            </div>
+            <div class="p-5">
+              <div class="part-brands">
+                <span class="brand-badge">Cartman</span>
+                <span class="brand-badge">Heavy Duty</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-100 mb-2">Cartman Booster Cables</h3>
+              
+              <div class="rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span class="review-count">(8,326 reviews)</span>
+              </div>
+              
+              <div class="price-container">
+                <span class="price">₱329.99</span>
+                <span class="original-price">₱439.99</span>
+                <span class="discount-badge">25% OFF</span>
+              </div>
+              
+              <div class="part-specs">
+                <span class="spec-badge">20ft</span>
+                <span class="spec-badge">4 Gauge</span>
+                <span class="spec-badge">800A</span>
+              </div>
+              
+              <div class="part-details">
+                Extra-long heavy-duty jumper cables with thick copper-clad aluminum conductors.
+              </div>
+              
+              <div class="part-features">
+                <div class="part-feature">Tangle-free design</div>
+                <div class="part-feature">Heat-resistant insulation</div>
+                <div class="part-feature">Sturdy alligator clamps</div>
+              </div>
+              
+              <div class="flex flex-col space-y-2 mt-4">
+                <a href="#" class="buy-button px-4 py-2 bg-orange-500 text-white rounded-lg text-center hover:bg-orange-600">
+                  <i class="fab fa-amazon mr-2"></i> Buy on Amazon
+                </a>
+                <a href="#" class="buy-button px-4 py-2 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700">
+                  <i class="fas fa-store mr-2"></i> Buy at Advance Auto
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="category-section mb-10">
+        <div class="flex items-center justify-between mb-6 cursor-pointer category-toggle" onclick="toggleCategory('belts')">
+          <h2 class="text-2xl font-semibold text-gray-100 flex items-center">
+            <i class="fas fa-cogs text-red-400 mr-3"></i>
+            Belts & Hoses
+          </h2>
+          <i id="belts-arrow" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+        </div>
+        
+        <div id="belts-category" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="serpentine timing belt drive">
+            <div class="part-image-container">
+              <img src="img/gates micro-v.jpg" alt="Serpentine Belt" class="part-image">
+            </div>
+            <div class="p-5">
+              <div class="part-brands">
+                <span class="brand-badge">Gates</span>
+                <span class="brand-badge">Micro-V</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-100 mb-2">Gates Micro-V Serpentine Belt</h3>
+              
+              <div class="rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fastar"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="review-count">(2,456 reviews)</span>
+              </div>
+              
+              <div class="price-container">
+                <span class="price">₱432.45</span>
+                <span class="original-price">₱538.99</span>
+                <span class="discount-badge">17% OFF</span>
+              </div>
+              
+              <div class="part-specs">
+                <span class="spec-badge">6PK2260</span>
+                <span class="spec-badge">EPDM</span>
+                <span class="spec-badge">OE Spec</span>
+              </div>
+              
+              <div class="part-details">
+                High-quality EPDM rubber belt with advanced cord technology for extended life.
+              </div>
+              
+              <div class="part-features">
+                <div class="part-feature">Resists cracking and abrasion</div>
+                <div class="part-feature">Precision molded ribs</div>
+                <div class="part-feature">Quieter operation</div>
+              </div>
+              
+              <div class="flex flex-col space-y-2 mt-4">
+                <a href="#" class="buy-button px-4 py-2 bg-orange-500 text-white rounded-lg text-center hover:bg-orange-600">
+                  <i class="fab fa-amazon mr-2"></i> Buy on Amazon
+                </a>
+                <a href="#" class="buy-button px-4 py-2 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700">
+                  <i class="fas fa-store mr-2"></i> Buy at Advance Auto
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="timing belt engine">
+            <div class="part-image-container">
+              <img src="img/tming belt.jpg" alt="Timing Belt" class="part-image">
+            </div>
+            <div class="p-5">
+              <div class="part-brands">
+                <span class="brand-badge">Aisin</span>
+                <span class="brand-badge">TKF-004</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-100 mb-2">Aisin Timing Belt Kit</h3>
+              
+              <div class="rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span class="review-count">(1,872 reviews)</span>
+              </div>
+              
+              <div class="price-container">
+                <span class="price">₱949.99</span>
+                <span class="original-price">₱1179.99</span>
+                <span class="discount-badge">17% OFF</span>
+              </div>
+              
+              <div class="part-specs">
+                <span class="spec-badge">Complete Kit</span>
+                <span class="spec-badge">Tensioner</span>
+                <span class="spec-badge">Idlers</span>
+              </div>
+              
+              <div class="part-details">
+                Complete timing belt kit with all necessary components for professional installation.
+              </div>
+              
+              <div class="part-features">
+                <div class="part-feature">OE-equivalent quality</div>
+                <div class="part-feature">Includes hydraulic tensioner</div>
+                <div class="part-feature">Precision-engineered components</div>
+              </div>
+              
+              <div class="flex flex-col space-y-2 mt-4">
+                <a href="#" class="buy-button px-4 py-2 bg-orange-500 text-white rounded-lg text-center hover:bg-orange-600">
+                  <i class="fab fa-amazon mr-2"></i> Buy on Amazon
+                </a>
+                <a href="#" class="buy-button px-4 py-2 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700">
+                  <i class="fas fa-store mr-2"></i> Buy at Advance Auto
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="radiator coolant hose">
+            <div class="part-image-container">
+              <img src="img/gates hose set.jfif" alt="Radiator Hoses" class="part-image">
+            </div>
+            <div class="p-5">
+              <div class="part-brands">
+                <span class="brand-badge">Gates</span>
+                <span class="brand-badge">Green Stripe</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-100 mb-2">Gates Radiator Hose Set</h3>
+              
+              <div class="rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="review-count">(987 reviews)</span>
+              </div>
+              
+              <div class="price-container">
+                <span class="price">₱38.75</span>
+                <span class="original-price">₱45.99</span>
+                <span class="discount-badge">16% OFF</span>
+              </div>
+              
+              <div class="part-specs">
+                <span class="spec-badge">Upper/Lower</span>
+                <span class="spec-badge">EPDM</span>
+                <span class="spec-badge">Molded</span>
+              </div>
+              
+              <div class="part-details">
+                Complete set of upper and lower radiator hoses with factory-style bends.
+              </div>
+              
+              <div class="part-features">
+                <div class="part-feature">Reinforced construction</div>
+                <div class="part-feature">Resists coolant degradation</div>
+                <div class="part-feature">Precise OEM fit</div>
+              </div>
+              
+              <div class="flex flex-col space-y-2 mt-4">
+                <a href="#" class="buy-button px-4 py-2 bg-orange-500 text-white rounded-lg text-center hover:bg-orange-600">
+                  <i class="fab fa-amazon mr-2"></i> Buy on Amazon
+                </a>
+                <a href="#" class="buy-button px-4 py-2 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700">
+                  <i class="fas fa-store mr-2"></i> Buy at Advance Auto
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="hose clamps fasteners">
+            <div class="part-image-container">
+              <img src="img/hose clamps.jpg" alt="Hose Clamps" class="part-image">
+            </div>
+            <div class="p-5">
+              <div class="part-brands">
+                <span class="brand-badge">Breeze</span>
+                <span class="brand-badge">Constant Torque</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-100 mb-2">Breeze Constant Torque Clamps</h3>
+              
+              <div class="rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span class="review-count">(2,134 reviews)</span>
+              </div>
+              
+              <div class="price-container">
+                <span class="price">₱24.99</span>
+                <span class="original-price">₱29.99</span>
+                <span class="discount-badge">17% OFF</span>
+              </div>
+              
+              <div class="part-specs">
+                <span class="spec-badge">10-Pack</span>
+                <span class="spec-badge">304SS</span>
+                <span class="spec-badge">5/8"-1"</span>
+              </div>
+              
+              <div class="part-details">
+                Premium stainless steel constant torque clamps for secure, vibration-proof connections.
+              </div>
+              
+              <div class="part-features">
+                <div class="part-feature">Maintains constant pressure</div>
+                <div class="part-feature">Corrosion resistant</div>
+                <div class="part-feature">Worm-drive adjustment</div>
+              </div>
+              
+              <div class="flex flex-col space-y-2 mt-4">
+                <a href="#" class="buy-button px-4 py-2 bg-orange-500 text-white rounded-lg text-center hover:bg-orange-600">
+                  <i class="fab fa-amazon mr-2"></i> Buy on Amazon
+                </a>
+                <a href="#" class="buy-button px-4 py-2 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700">
+                  <i class="fas fa-store mr-2"></i> Buy at Advance Auto
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="category-section mb-10">
+        <div class="flex items-center justify-between mb-6 cursor-pointer category-toggle" onclick="toggleCategory('brakes')">
+          <h2 class="text-2xl font-semibold text-gray-100 flex items-center">
+            <i class="fas fa-stop-circle text-red-400 mr-3"></i>
+            Brakes
+          </h2>
+          <i id="brakes-arrow" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+        </div>
+        
+        <div id="brakes-category" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="brake pads stopping">
+            <div class="part-image-container">
+              <img src="img/brake pads.jpg" alt="Brake Pads" class="part-image">
+            </div>
+            <div class="p-5">
+              <div class="part-brands">
+                <span class="brand-badge">Power Stop</span>
+                <span class="brand-badge">Z23</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-100 mb-2">Power Stop Z23 Evolution Pads</h3>
+              
+              <div class="rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="review-count">(4,567 reviews)</span>
+              </div>
+              
+              <div class="price-container">
+                <span class="price">₱59.99</span>
+                <span class="original-price">₱69.99</span>
+                <span class="discount-badge">14% OFF</span>
+              </div>
+              
+              <div class="part-specs">
+                <span class="spec-badge">Ceramic</span>
+                <span class="spec-badge">Front</span>
+                <span class="spec-badge">OE Fit</span>
+              </div>
+              
+              <div class="part-details">
+                Premium ceramic brake pads with carbon-fiber reinforced friction material.
+              </div>
+              
+              <div class="part-features">
+                <div class="part-feature">Dust-free performance</div>
+                <div class="part-feature">Quiet operation</div>
+                <div class="part-feature">Includes hardware</div>
+              </div>
+              
+              <div class="flex flex-col space-y-2 mt-4">
+                <a href="#" class="buy-button px-4 py-2 bg-orange-500 text-white rounded-lg text-center hover:bg-orange-600">
+                  <i class="fab fa-amazon mr-2"></i> Buy on Amazon
+                </a>
+                <a href="#" class="buy-button px-4 py-2 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700">
+                  <i class="fas fa-store mr-2"></i> Buy at Advance Auto
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="brake rotors discs">
+            <div class="part-image-container">
+              <img src="img/centric brake rotors.jpg" alt="Brake Rotors" class="part-image">
+            </div>
+            <div class="p-5">
+              <div class="part-brands">
+                <span class="brand-badge">Centric</span>
+                <span class="brand-badge">Premium</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-100 mb-2">Centric Premium Brake Rotors</h3>
+              
+              <div class="rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span class="review-count">(3,245 reviews)</span>
+              </div>
+              
+              <div class="price-container">
+                <span class="price">₱129.99</span>
+                <span class="original-price">₱149.99</span>
+                <span class="discount-badge">13% OFF</span>
+              </div>
+              
+              <div class="part-specs">
+                <span class="spec-badge">Pair</span>
+                <span class="spec-badge">Coated</span>
+                <span class="spec-badge">Premium</span>
+              </div>
+              
+              <div class="part-details">
+                High-quality brake rotors with non-corrosive coating for extended life.
+              </div>
+              
+              <div class="part-features">
+                <div class="part-feature">Precision balanced</div>
+                <div class="part-feature">Thermal stress relieved</div>
+                <div class="part-feature">Corrosion resistant</div>
+              </div>
+              
+              <div class="flex flex-col space-y-2 mt-4">
+                <a href="#" class="buy-button px-4 py-2 bg-orange-500 text-white rounded-lg text-center hover:bg-orange-600">
+                  <i class="fab fa-amazon mr-2"></i> Buy on Amazon
+                </a>
+                <a href="#" class="buy-button px-4 py-2 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700">
+                  <i class="fas fa-store mr-2"></i> Buy at Advance Auto
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="brake caliper hydraulic">
+            <div class="part-image-container">
+              <img src="img/ACDelco.jpg" alt="Brake Calipers" class="part-image">
+            </div>
+            <div class="p-5">
+              <div class="part-brands">
+                <span class="brand-badge">ACDelco</span>
+                <span class="brand-badge">Gold</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-100 mb-2">ACDelco Gold Caliper</h3>
+              
+              <div class="rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="review-count">(1,987 reviews)</span>
+              </div>
+              
+              <div class="price-container">
+                <span class="price">₱89.99</span>
+                <span class="original-price">₱109.99</span>
+                <span class="discount-badge">18% OFF</span>
+              </div>
+              
+              <div class="part-specs">
+                <span class="spec-badge">Front Left</span>
+                <span class="spec-badge">Loaded</span>
+                <span class="spec-badge">OE Spec</span>
+              </div>
+              
+              <div class="part-details">
+                Remanufactured brake caliper with all necessary hardware for easy installation.
+              </div>
+              
+              <div class="part-features">
+                <div class="part-feature">Includes pads and hardware</div>
+                <div class="part-feature">Pressure tested</div>
+                <div class="part-feature">Lifetime warranty</div>
+              </div>
+              
+              <div class="flex flex-col space-y-2 mt-4">
+                <a href="#" class="buy-button px-4 py-2 bg-orange-500 text-white rounded-lg text-center hover:bg-orange-600">
+                  <i class="fab fa-amazon mr-2"></i> Buy on Amazon
+                </a>
+                <a href="#" class="buy-button px-4 py-2 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700">
+                  <i class="fas fa-store mr-2"></i> Buy at Advance Auto
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="part-card rounded-xl overflow-hidden fade-in" data-keywords="brake fluid dot">
+            <div class="part-image-container">
+              <img src="img/motul.jpeg" alt="Brake Fluid" class="part-image">
+            </div>
+            <div class="p-5">
+              <div class="part-brands">
+                <span class="brand-badge">Motul</span>
+                <span class="brand-badge">DOT 5.1</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-100 mb-2">Motul DOT 5.1 Brake Fluid</h3>
+              
+              <div class="rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span class="review-count">(2,345 reviews)</span>
+              </div>
+              
+              <div class="price-container">
+                <span class="price">₱12.99</span>
+                <span class="original-price">₱15.99</span>
+                <span class="discount-badge">19% OFF</span>
+              </div>
+              
+              <div class="part-specs">
+                <span class="spec-badge">500ml</span>
+                <span class="spec-badge">High Temp</span>
+                <span class="spec-badge">Synthetic</span>
+              </div>
+              
+              <div class="part-details">
+                High-performance synthetic brake fluid with extremely high boiling point.
+              </div>
+              
+              <div class="part-features">
+                <div class="part-feature">Wet boiling point: 356°F</div>
+                <div class="part-feature">Compatible with ABS</div>
+                <div class="part-feature">Non-corrosive</div>
+              </div>
+              
+              <div class="flex flex-col space-y-2 mt-4">
+                <a href="#" class="buy-button px-4 py-2 bg-orange-500 text-white rounded-lg text-center hover:bg-orange-600">
+                  <i class="fab fa-amazon mr-2"></i> Buy on Amazon
+                </a>
+                <a href="#" class="buy-button px-4 py-2 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700">
+                  <i class="fas fa-store mr-2"></i> Buy at Advance Auto
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="bg-blue-900 rounded-xl p-8 mb-8 text-white">
+      <div class="flex flex-col md:flex-row items-center justify-between">
+        <div class="mb-4 md:mb-0">
+          <h3 class="text-xl font-bold mb-2">Get Exclusive Parts Deals</h3>
+          <p class="opacity-90">Subscribe to our newsletter for special discounts on tools and parts.</p>
+        </div>
+        <div class="flex w-full md:w-auto">
+          <input type="email" placeholder="Your email address" class="px-4 py-3 rounded-l-lg w-full md:w-64 text-white-900 focus:outline-none">
+          <button class="bg-blue-700 px-6 py-3 rounded-r-lg font-medium hover:bg-blue-800 transition">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-900 text-gray-300 py-8 border-t border-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-6">
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-gray-100">Car Care Guide</h4>
+          <p>Your trusted source for automotive maintenance and repair information.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-gray-100">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-blue-400 transition">About Us</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Maintenance Tips</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Parts & Tools</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-gray-100">Resources</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-blue-400 transition">DIY Guides</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Video Tutorials</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Troubleshooting</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-gray-100">Connect</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="hover:text-blue-400 transition text-xl"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="hover:text-blue-400 transition text-xl"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hover:text-blue-400 transition text-xl"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-blue-400 transition text-xl"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 text-center">
+        <p>&copy; 2025 Car Care Guide. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('search-input');
+      const searchButton = document.getElementById('search-button');
+      const partItems = document.querySelectorAll('.part-card');
+      
+      function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        partItems.forEach(item => {
+          const title = item.querySelector('h3').textContent.toLowerCase();
+          const description = item.querySelector('p').textContent.toLowerCase();
+          const keywords = item.dataset.keywords.toLowerCase();
+          
+          if (title.includes(searchTerm) || 
+              description.includes(searchTerm) || 
+              keywords.includes(searchTerm)) {
+            item.style.display = 'block';
+            item.classList.add('fade-in');
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      }
+      
+      searchButton.addEventListener('click', performSearch);
+      searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          performSearch();
+        }
+      });
+      
+      const filterBtn = document.getElementById('filter-btn');
+      const filterDropdown = document.getElementById('filter-dropdown');
+      
+      filterBtn.addEventListener('click', () => {
+        filterDropdown.classList.toggle('hidden');
+      });
+      
+
+      function toggleCategory(categoryId) {
+        const category = document.getElementById(`${categoryId}-category`);
+        const arrow = document.getElementById(`${categoryId}-arrow`);
+        
+        category.classList.toggle('hidden');
+        arrow.classList.toggle('rotate-180');
+      }
+      
+      document.querySelectorAll('[id$="-category"]').forEach(category => {
+        category.classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

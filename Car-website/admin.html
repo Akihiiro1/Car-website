@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Manager</title>
+</head>
+<body>
+
+<h2>Admin Manager</h2>
+
+<form id="addForm">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <button type="submit">Add</button>
+</form>
+
+<table border="1" id="adminsTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+    function loadAdmins() {
+        fetch("load_admins.php")
+            .then(r => r.json())
+            .then(data => {
+                const tbody = document.querySelector("#adminsTable tbody");
+                tbody.innerHTML = "";
+                data.forEach(a => {
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = `
+                        <td>${a.name}</td>
+                        <td>${a.email}</td>
+                        <td>
+                            <button onclick="editAdmin(${a.id}, '${a.name}', '${a.email}')">Edit</button>
+                            <button onclick="deleteAdmin(${a.id})">Delete</button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            });
+    }
+
+    document.getElementById("addForm").addEventListener("submit", e => {
+        e.preventDefault();
+        const fd = new FormData();
+        fd.append("name", document.getElementById("name").value);
+        fd.append("email", document.getElementById("email").value);
+
+        fetch("add_admin.php", { method: "POST", body: fd })
+            .then(() => {
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                loadAdmins();
+            });
+    });
+
+    function deleteAdmin(id) {
+        const fd = new FormData();
+        fd.append("id", id);
+
+        fetch("delete_admin.php", { method: "POST", body: fd })
+            .then(() => loadAdmins());
+    }
+
+    function editAdmin(id, oldName, oldEmail) {
+        const name = prompt("Enter new name:", oldName);
+        const email = prompt("Enter new email:", oldEmail);
+
+        if (!name || !email) return;
+
+        const fd = new FormData();
+        fd.append("id", id);
+        fd.append("name", name);
+        fd.append("email", email);
+
+        fetch("update_admin.php", { method: "POST", body: fd })
+            .then(() => loadAdmins());
+    }
+
+    loadAdmins();
+</script>
+
+</body>
+</html>

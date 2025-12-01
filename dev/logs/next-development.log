@@ -1,0 +1,33 @@
+[00:00:01.850] Server  LOG      ✓ Ready in 1293ms
+[00:00:08.648] Server  LOG      ○ Compiling / ...
+[00:00:11.463] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:13.988] Browser ERROR   Error fetching data: {"code":"ERR_NETWORK","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"env":{},"headers":{"Accept":"application/json, text/plain, */*"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"http://localhost:3001/users","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Network Error","name":"AxiosError","stack":"AxiosError: Network Error\n    at XMLHttpRequest.handleError (http://localhost:3000/_next/static/chunks/e4e14_aba7e18c._.js:4267:25)\n    at Axios.request (http://localhost:3000/_next/static/chunks/e4e14_aba7e18c._.js:5025:49)\n    at async fetchUsers (http://localhost:3000/_next/static/chunks/AXIOS-DATABASE_app_b9e43d0c._.js:222:30)"}
+[00:01:06.977] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:51.434] Server  LOG      ✓ Compiled in 132ms
+[00:03:50.630] Server  LOG      ✓ Compiled in 335ms
+[00:06:53.566] Server  LOG      ✓ Compiled in 113ms
+[00:08:31.896] Server  LOG      ✓ Compiled in 130ms
+[00:08:32.427] Browser ERROR   ./AXIOS-DATABASE/app/page.tsx:89:32
+Parsing ecmascript source code failed
+  87 |           <Header title=" />
+  88 |           <Inputs name={name} email={email} setName={setName} setEmail={setEmail} />
+> 89 |           <Buttons name="Submit" onClick={handleSubmit} />
+     |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  90 |         </div>
+  91 |         {/* Submitted Users */}
+  92 |         <div className="bg-gray-900 rounded-xl shadow-lg p-6 w-full max-w-sm border-2 border-blue-400">
+
+Unterminated string constant
+
+Import traces:
+  Client Component Browser:
+    ./AXIOS-DATABASE/app/page.tsx [Client Component Browser]
+    ./AXIOS-DATABASE/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./AXIOS-DATABASE/app/page.tsx [Client Component SSR]
+    ./AXIOS-DATABASE/app/page.tsx [Server Component]
+[00:08:40.373] Server  LOG      ✓ Compiled in 40ms
+[00:08:44.880] Server  LOG      ✓ Compiled in 242ms
+[00:09:04.788] Server  LOG      ✓ Compiled in 24ms
+[00:09:08.022] Server  LOG      ✓ Compiled in 29ms

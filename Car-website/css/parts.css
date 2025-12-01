@@ -1,0 +1,185 @@
+.parts-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.parts-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #fff;
+  border-bottom: 2px solid #2196F3;
+  padding-bottom: 1rem;
+}
+
+.category-section {
+  margin-bottom: 3rem;
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.category-section h2 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #333;
+}
+
+.parts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.part-item {
+  background: #242424;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.part-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.part-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.part-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.part-item:hover .part-image img {
+  transform: scale(1.05);
+}
+
+.part-details {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.part-details h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.part-details p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  border-radius: 50px;
+  box-shadow: 0 0 0 3px rgba(11, 171, 245, 0.3);
+}
+
+.buy-options {
+  margin-top: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.buy-button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s;
+  flex: 1;
+}
+
+.buy-button.amazon {
+  background-color: #FF9900;
+  color: #000;
+}
+
+.buy-button.amazon:hover {
+  background-color: #e88a00;
+}
+
+.buy-button.advance {
+  background-color: #D52B1E;
+  color: #fff;
+}
+
+.buy-button.advance:hover {
+  background-color: #bf261a;
+}
+
+.breadcrumb {
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.breadcrumb a {
+  color: #2196F3;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .parts-section {
+    padding: 1rem;
+  }
+  
+  .parts-section h1 {
+    font-size: 2rem;
+  }
+  
+  .category-section {
+    padding: 1.5rem;
+  }
+  
+  .category-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .parts-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .buy-options {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .parts-section h1 {
+    font-size: 1.75rem;
+  }
+  
+  .category-section h2 {
+    font-size: 1.25rem;
+  }
+}

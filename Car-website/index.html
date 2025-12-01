@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Car Care Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #000000;
+      color: #fff;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #3b82f6, #10b981);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .glow-card {
+      transition: all 0.3s ease;
+    }
+    .glow-card:hover {
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+      transform: translateY(-5px);
+    }
+    .testimonial-card {
+      background: linear-gradient(135deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.9));
+      border-left: 4px solid #3b82f6;
+    }
+    .vehicle-card {
+      transition: all 0.3s ease;
+      transform: perspective(1000px) rotateX(0deg);
+    }
+    .vehicle-card:hover {
+      transform: perspective(1000px) rotateX(10deg);
+      box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.1), 0 10px 10px -5px rgba(59, 130, 246, 0.04);
+    }
+    .search-input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(11, 171, 245, 0.3);
+    }
+    .dropdown-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+      opacity: 1;
+    }
+    .select-arrow {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%233b82f6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.5rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3b82f6',
+            dark: '#0f172a',
+            darker: '#020617',
+            accent: '#f59e0b',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2">
+            <div class="bg-blue-500 p-2 rounded-lg">
+              <i class="fas fa-tools text-white"></i>
+            </div>
+            <span class="text-white font-bold text-xl">Car Care <span class="gradient-text">Guide</span></span>
+          </a>
+        </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-center space-x-4">
+            <a href="about.html" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium">About Us</a>
+            <a href="maintenance.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Maintenance</a>
+            <a href="parts.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Parts & Tools</a>
+            <a href="contact.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+          </div>
+        </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-4 flex items-center md:ml-6">
+            <div class="relative">
+              <input type="text" placeholder="Search..." class="bg-gray-800 text-white px-4 py-1 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-64">
+              <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="-mr-2 flex md:hidden">
+          <button type="button" class="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <aside class="lg:w-1/4 bg-dark p-6 rounded-xl border border-gray-800 h-fit sticky top-24">
+        <h2 class="text-xl font-bold text-white mb-4 flex items-center">
+          <i class="fas fa-car mr-2 text-accent"></i> Pick Your Vehicle
+        </h2>
+        
+        <div class="space-y-4">
+          <div>
+            <label for="make" class="block text-sm font-medium text-gray-300 mb-1">Make</label>
+            <select id="make" class="select-arrow bg-gray-800 border border-gray-700 text-white rounded-md px-4 py-2 pr-8 w-full focus:ring-2 focus:ring-accent focus:border-accent transition-colors">
+              <option value="">Select Make</option>
+              <option value="acura">Acura</option>
+              <option value="alfa-romeo">Alfa Romeo</option>
+              <option value="audi">Audi</option>
+              <option value="bmw">BMW</option>
+              <option value="buick">Buick</option>
+              <option value="cadillac">Cadillac</option>
+              <option value="chevrolet">Chevrolet</option>
+              <option value="chrysler">Chrysler</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="model" class="block text-sm font-medium text-gray-300 mb-1">Model</label>
+            <select id="model" disabled class="select-arrow bg-gray-800 border border-gray-700 text-gray-500 rounded-md px-4 py-2 pr-8 w-full">
+              <option value="">Select Model</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="year" class="block text-sm font-medium text-gray-300 mb-1">Year</label>
+            <select id="year" disabled class="select-arrow bg-gray-800 border border-gray-700 text-gray-500 rounded-md px-4 py-2 pr-8 w-full">
+              <option value="">Select Year</option>
+            </select>
+          </div>
+          
+          <button id="find-guides" disabled class="w-full bg-[#0066cc] hover:bg-[#3385ff] text-white font-medium py-2 px-4 rounded-md transition-colors flex items-center justify-center mt-4">
+            <i class="fas fa-wrench mr-2"></i> Find Guides
+          </button>
+          <div id="guides-container" class="mt-6"></div>
+        </div>
+        
+        <div class="mt-6 pt-6 border-t border-gray-800">
+          <h3 class="text-lg font-medium text-white mb-3">Popular Categories</h3>
+          <ul class="space-y-2">
+            <li><a href="oil-change.html" class="text-gray-300 hover:text-accent transition-colors flex items-center"><i class="fas fa-oil-can text-xs mr-2"></i> Oil Change</a></li>
+            <li><a href="battery-replacement.html" class="text-gray-300 hover:text-accent transition-colors flex items-center"><i class="fas fa-bolt text-xs mr-2"></i> Battery Replacement</a></li>
+            <li><a href="tire-rotation.html" class="text-gray-300 hover:text-accent transition-colors flex items-center"><i class="fas fa-tire text-xs mr-2"></i> Tire Rotation</a></li>
+            <li><a href="air-filters.html" class="text-gray-300 hover:text-accent transition-colors flex items-center"><i class="fas fa-filter text-xs mr-2"></i> Air Filter Change</a></li>
+          </ul>
+        </div>
+      </aside>
+      
+      <section class="lg:w-3/4">
+        <div class="bg-gradient-to-r from-dark to-gray-900 rounded-xl p-6 border border-gray-800 mb-8">
+          <h1 class="text-3xl md:text-4xl font-bold text-white mb-3">DIY Car Repair <span class="text-accent">Made Simple</span></h1>
+          <p class="text-lg text-gray-300 mb-6">Browse step-by-step guides and videos to maintain and repair your vehicle like a pro</p>
+          <div class="flex flex-wrap gap-3">
+            <button id="watch-tutorials" class="bg-[#0066cc] hover:bg-[#3385ff] text-white px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center">
+              <i class="fas fa-play-circle mr-2"></i> Watch Tutorials
+            </button>
+            <button id="get-help" class="bg-[#0066cc] hover:bg-[#3385ff] text-white px-4 py-2 rounded-md text-sm font-medium transition-colors border border-gray-700 flex items-center">
+              <i class="fas fa-question-circle mr-2"></i> Get Help
+            </button>
+          </div>
+        </div>
+        
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+          <i class="fas fa-car-side mr-3 text-accent"></i> Browse by Make
+        </h2>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          <a href="acura.html" class="vehicle-card bg-dark rounded-lg overflow-hidden border border-gray-800 hover:border-accent/30 group">
+            <div class="relative overflow-hidden h-40">
+              <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg" alt="Acura" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-white font-medium group-hover:text-accent transition-colors">Acura</h3>
+              <p class="text-gray-400 text-sm mt-1">25+ guides available</p>
+            </div>
+          </a>
+          
+          <a href="alfa-romeo.html" class="vehicle-card bg-dark rounded-lg overflow-hidden border border-gray-800 hover:border-accent/30 group">
+            <div class="relative overflow-hidden h-40">
+              <img src="https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg" alt="Alfa Romeo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-white font-medium group-hover:text-accent transition-colors">Alfa Romeo</h3>
+              <p class="text-gray-400 text-sm mt-1">18+ guides available</p>
+            </div>
+          </a>
+          
+          <a href="audi.html" class="vehicle-card bg-dark rounded-lg overflow-hidden border border-gray-800 hover:border-accent/30 group">
+            <div class="relative overflow-hidden h-40">
+              <img src="https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg" alt="Audi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-white font-medium group-hover:text-accent transition-colors">Audi</h3>
+              <p class="text-gray-400 text-sm mt-1">32+ guides available</p>
+            </div>
+          </a>
+          
+          <a href="bmw.html" class="vehicle-card bg-dark rounded-lg overflow-hidden border border-gray-800 hover:border-accent/30 group">
+            <div class="relative overflow-hidden h-40">
+              <img src="https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg" alt="BMW" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-white font-medium group-hover:text-accent transition-colors">BMW</h3>
+              <p class="text-gray-400 text-sm mt-1">45+ guides available</p>
+            </div>
+          </a>
+          
+          <a href="buick.html" class="vehicle-card bg-dark rounded-lg overflow-hidden border border-gray-800 hover:border-accent/30 group">
+            <div class="relative overflow-hidden h-40">
+              <img src="https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg" alt="Buick" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-white font-medium group-hover:text-accent transition-colors">Buick</h3>
+              <p class="text-gray-400 text-sm mt-1">22+ guides available</p>
+            </div>
+          </a>
+          
+          <a href="cadillac.html" class="vehicle-card bg-dark rounded-lg overflow-hidden border border-gray-800 hover:border-accent/30 group">
+            <div class="relative overflow-hidden h-40">
+              <img src="https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg" alt="Cadillac" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-white font-medium group-hover:text-accent transition-colors">Cadillac</h3>
+              <p class="text-gray-400 text-sm mt-1">28+ guides available</p>
+            </div>
+          </a>
+          
+          <a href="chevrolet.html" class="vehicle-card bg-dark rounded-lg overflow-hidden border border-gray-800 hover:border-accent/30 group">
+            <div class="relative overflow-hidden h-40">
+              <img src="https://images.pexels.com/photos/337909/pexels-photo-337909.jpeg" alt="Chevrolet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-white font-medium group-hover:text-accent transition-colors">Chevrolet</h3>
+              <p class="text-gray-400 text-sm mt-1">50+ guides available</p>
+            </div>
+          </a>
+          
+          <a href="chrysler.html" class="vehicle-card bg-dark rounded-lg overflow-hidden border border-gray-800 hover:border-accent/30 group">
+            <div class="relative overflow-hidden h-40">
+              <img src="https://images.pexels.com/photos/2127733/pexels-photo-2127733.jpeg" alt="Chrysler" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-white font-medium group-hover:text-accent transition-colors">Chrysler</h3>
+              <p class="text-gray-400 text-sm mt-1">20+ guides available</p>
+            </div>
+          </a>
+        </div>
+        
+        <div class="mt-12 bg-dark rounded-xl p-6 border border-gray-800">
+          <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+            <i class="fas fa-fire text-accent mr-3"></i> Trending Guides
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 bg-gray-800 p-3 rounded-lg">
+                <i class="fas fa-oil-can text-accent text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-medium text-white">How to Change Your Oil</h3>
+                <p class="text-gray-400 mt-1">Learn the proper way to change your engine oil and filter with our step-by-step guide.</p>
+                <div class="flex items-center mt-3 text-sm text-gray-500">
+                  <span><i class="fas fa-clock mr-1"></i> 30 min</span>
+                  <span class="mx-3">•</span>
+                  <span><i class="fas fa-star mr-1 text-yellow-400"></i> 4.8</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 bg-gray-800 p-3 rounded-lg">
+                <i class="fas fa-bolt text-accent text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-medium text-white">Battery Replacement Guide</h3>
+                <p class="text-gray-400 mt-1">Everything you need to know to safely replace your car battery at home.</p>
+                <div class="flex items-center mt-3 text-sm text-gray-500">
+                  <span><i class="fas fa-clock mr-1"></i> 20 min</span>
+                  <span class="mx-3">•</span>
+                  <span><i class="fas fa-star mr-1 text-yellow-400"></i> 4.6</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="bg-dark border-t border-gray-800 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-white font-bold text-lg mb-4">CarCareGuide</h3>
+          <p class="text-gray-400">Your trusted source for DIY car repair and maintenance guides.</p>
+          <div class="flex space-x-4 mt-4">
+            <a href="#" class="text-gray-400 hover:text-accent transition-colors"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-400 hover:text-accent transition-colors"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-gray-400 hover:text-accent transition-colors"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-accent transition-colors"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-medium mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">Home</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">About Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">Maintenance</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">Parts & Tools</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-medium mb-4">Resources</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">Blog</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">Tutorials</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">FAQs</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-accent transition-colors">Support</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-medium mb-4">Newsletter</h4>
+          <p class="text-gray-400 mb-3">Subscribe for the latest car care tips and guides.</p>
+          <div class="flex">
+            <input type="email" placeholder="Your email" class="bg-gray-800 text-white px-4 py-2 rounded-l-md focus:outline-none focus:ring-1 focus:ring-accent w-full">
+            <button class="bg-accent hover:bg-yellow-600 text-white px-4 py-2 rounded-r-md transition-colors">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm">© 2023 CarCareGuide. All rights reserved.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-accent text-sm transition-colors">Privacy Policy</a>
+          <a href="#" class="text-gray-400 hover:text-accent text-sm transition-colors">Terms of Service</a>
+          <a href="#" class="text-gray-400 hover:text-accent text-sm transition-colors">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+    <div class="bg-[#1a1a1a] rounded-xl p-8 max-w-md w-full border border-gray-800 relative">
+      <button id="close-modal" class="absolute top-3 right-3 text-gray-400 hover:text-white text-xl">&times;</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const makeSelect = document.getElementById('make');
+      const modelSelect = document.getElementById('model');
+      const yearSelect = document.getElementById('year');
+      const findButton = document.getElementById('find-guides');
+      
+      const vehicleData = {
+        acura: ['MDX', 'RDX', 'TLX', 'ILX'],
+        'alfa-romeo': ['Giulia', 'Stelvio', '4C'],
+        audi: ['A4', 'A6', 'Q5', 'Q7'],
+        bmw: ['3 Series', '5 Series', 'X3', 'X5'],
+        buick: ['Enclave', 'Encore', 'Envision'],
+        cadillac: ['XT5', 'Escalade', 'CT5'],
+        chevrolet: ['Silverado', 'Equinox', 'Tahoe'],
+        chrysler: ['300', 'Pacifica', 'Voyager']
+      };
+      
+      const yearData = ['2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016'];
+      
+      makeSelect.addEventListener('change', function() {
+        if (this.value) {
+          modelSelect.disabled = false;
+          modelSelect.innerHTML = '<option value="">Select Model</option>';
+          
+          vehicleData[this.value].forEach(model => {
+            const option = document.createElement('option');
+            option.value = model.toLowerCase().replace(' ', '-');
+            option.textContent = model;
+            modelSelect.appendChild(option);
+          });
+          
+          modelSelect.classList.remove('text-gray-500');
+          modelSelect.classList.add('text-white');
+        } else {
+          modelSelect.disabled = true;
+          modelSelect.innerHTML = '<option value="">Select Model</option>';
+          modelSelect.classList.remove('text-white');
+          modelSelect.classList.add('text-gray-500');
+          yearSelect.disabled = true;
+          yearSelect.innerHTML = '<option value="">Select Year</option>';
+          findButton.disabled = true;
+        }
+      });
+      
+      modelSelect.addEventListener('change', function() {
+        if (this.value) {
+          yearSelect.disabled = false;
+          yearSelect.innerHTML = '<option value="">Select Year</option>';
+          
+          yearData.forEach(year => {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            yearSelect.appendChild(option);
+          });
+          
+          yearSelect.classList.remove('text-gray-500');
+          yearSelect.classList.add('text-white');
+        } else {
+          yearSelect.disabled = true;
+          yearSelect.innerHTML = '<option value="">Select Year</option>';
+          yearSelect.classList.remove('text-white');
+          yearSelect.classList.add('text-gray-500');
+          findButton.disabled = true;
+        }
+      });
+      
+      yearSelect.addEventListener('change', function() {
+        if (this.value) {
+          findButton.disabled = false;
+        } else {
+          findButton.disabled = true;
+        }
+      });
+      
+      const guidelines = {
+  acura: [
+    "Follow Acura's recommended maintenance schedule for oil changes, tire rotations, and fluid checks.",
+    "Use genuine Acura parts for best performance and reliability.",
+    "Check battery, brakes, and filters regularly.",
+    "Refer to your owner's manual for model-specific tips."
+  ],
+  'alfa-romeo': [
+    "Use high-quality synthetic oil for optimal engine performance.",
+    "Inspect brakes and suspension regularly due to sporty handling.",
+    "Check coolant and transmission fluid levels often.",
+    "Follow Alfa Romeo's maintenance intervals for reliability."
+  ],
+  audi: [
+    "Use approved synthetic oil and OEM filters for engine longevity.",
+    "Monitor brake pad and rotor wear, especially on performance models.",
+    "Check tire pressure and alignment regularly.",
+    "Follow Audi's service intervals for all fluids and filters."
+  ],
+  bmw: [
+    "Use BMW-approved fluids and parts for all maintenance.",
+    "Check coolant and oil levels frequently, especially on turbo models.",
+    "Monitor brake and tire wear for safety and performance.",
+    "Follow BMW's recommended service intervals for best results."
+  ],
+  buick: [
+    "Use recommended fluids and genuine Buick parts for maintenance.",
+    "Check engine oil, transmission fluid, and coolant regularly.",
+    "Inspect brakes and tires for wear and safety.",
+    "Follow Buick's maintenance schedule for reliability."
+  ],
+  cadillac: [
+    "Use premium fluids and genuine Cadillac parts for maintenance.",
+    "Check oil, coolant, and transmission fluid regularly.",
+    "Inspect brakes and tires for wear and safety.",
+    "Follow Cadillac's recommended service intervals."
+  ],
+  chevrolet: [
+    "Use recommended fluids and genuine Chevrolet parts for maintenance.",
+    "Check engine oil, coolant, and transmission fluid regularly.",
+    "Inspect brakes and tires for wear and safety.",
+    "Follow Chevrolet's maintenance schedule for reliability."
+  ],
+  chrysler: [
+    "Use recommended fluids and genuine Chrysler parts for maintenance.",
+    "Check engine oil, coolant, and transmission fluid regularly.",
+    "Inspect brakes and tires for wear and safety.",
+    "Follow Chrysler's maintenance schedule for reliability."
+  ]
+};
+const guidesContainer = document.getElementById('guides-container');
+findButton.addEventListener('click', function() {
+  const make = makeSelect.value;
+  const model = modelSelect.value;
+  const year = yearSelect.value;
+  let html = '';
+  if (make && guidelines[make]) {
+    html += `<div class='bg-[#1a1a1a] rounded-xl p-6 border border-gray-800'>`;
+    html += `<h3 class='text-xl font-bold text-white mb-4'>${year ? year + ' ' : ''}${make.charAt(0).toUpperCase() + make.slice(1).replace('-', ' ')} Guidelines</h3>`;
+    html += '<ul class="list-disc ml-6 text-gray-300">';
+    guidelines[make].forEach(g => {
+      html += `<li>${g}</li>`;
+    });
+    html += '</ul>';
+    html += '</div>';
+  } else {
+    html = `<div class='bg-[#1a1a1a] rounded-xl p-6 border border-gray-800'><p class='text-gray-300'>No guidelines available for this selection.</p></div>`;
+  }
+  guidesContainer.innerHTML = html;
+});
+      
+      const watchTutorialsBtn = document.getElementById('watch-tutorials');
+const getHelpBtn = document.getElementById('get-help');
+const modalOverlay = document.getElementById('modal-overlay');
+const modalContent = document.getElementById('modal-content');
+const closeModalBtn = document.getElementById('close-modal');
+
+watchTutorialsBtn.addEventListener('click', function() {
+  modalContent.innerHTML = `
+    <h2 class='text-2xl font-bold text-white mb-4'>How to Watch Tutorials</h2>
+    <ul class='list-disc ml-6 text-gray-300 mb-4'>
+      <li>Browse the car cards or use the vehicle selector to pick your car.</li>
+      <li>Click on a car to view its dedicated page with guides and tutorials.</li>
+      <li>Look for the <span class='text-[#0066cc] font-semibold'>Watch Tutorials</span> button on guide pages to view step-by-step videos.</li>
+      <li>Use the search bar at the top to find specific repair topics.</li>
+    </ul>
+    <p class='text-gray-400'>Need more help? Click <span class='text-[#0066cc] font-semibold'>Get Help</span> for support options.</p>
+  `;
+  modalOverlay.classList.remove('hidden');
+});
+
+getHelpBtn.addEventListener('click', function() {
+  modalContent.innerHTML = `
+    <h2 class='text-2xl font-bold text-white mb-4'>How to Get Help</h2>
+    <ul class='list-disc ml-6 text-gray-300 mb-4'>
+      <li>Use the <span class='text-[#0066cc] font-semibold'>Search</span> bar to find guides by keyword.</li>
+      <li>Visit the <span class='text-[#0066cc] font-semibold'>Contact</span> page for support and questions.</li>
+      <li>Check the <span class='text-[#0066cc] font-semibold'>FAQ</span> and <span class='text-[#0066cc] font-semibold'>Tutorials</span> in the Resources section of the footer.</li>
+      <li>Explore maintenance and parts pages for more information.</li>
+    </ul>
+    <p class='text-gray-400'>Still need help? Reach out via the contact form for personalized assistance.</p>
+  `;
+  modalOverlay.classList.remove('hidden');
+});
+
+closeModalBtn.addEventListener('click', function() {
+  modalOverlay.classList.add('hidden');
+});
+    });
+  </script>
+</body>
+</html>

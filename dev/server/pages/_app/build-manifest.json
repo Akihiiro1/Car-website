@@ -1,0 +1,23 @@
+{
+  "devFiles": [],
+  "ampDevFiles": [],
+  "polyfillFiles": [],
+  "lowPriorityFiles": [],
+  "rootMainFiles": [],
+  "pages": {
+    "/_app": [
+      "static/chunks/e4e14_next_dist_compiled_eab38da5._.js",
+      "static/chunks/e4e14_next_dist_shared_lib_d5bfc213._.js",
+      "static/chunks/e4e14_next_dist_client_1952e841._.js",
+      "static/chunks/e4e14_next_dist_e6a86e14._.js",
+      "static/chunks/e4e14_next_app_a227080a.js",
+      "static/chunks/[next]_entry_page-loader_ts_ef42b9ab._.js",
+      "static/chunks/e4e14_react-dom_2e8558b0._.js",
+      "static/chunks/e4e14_dc4a9c6d._.js",
+      "static/chunks/[root-of-the-server]__e78dd396._.js",
+      "static/chunks/AXIOS-DATABASE_pages__app_2da965e7._.js",
+      "static/chunks/turbopack-AXIOS-DATABASE_pages__app_2fd114e9._.js"
+    ]
+  },
+  "ampFirstPages": []
+}
