@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-  <!-- Include the Axios library via CDN for API calls -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
   <style>
     body {
@@ -34,20 +33,6 @@
       background: linear-gradient(135deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.9));
       border-left: 4px solid #3b82f6;
     }
-    /* Add a spinner style for the loading state */
-    .spinner {
-      border: 4px solid rgba(255, 255, 255, 0.3);
-      border-top: 4px solid #ffffff;
-      border-radius: 50%;
-      width: 1.5rem;
-      height: 1.5rem;
-      animation: spin 1s linear infinite;
-      margin-left: 0.5rem;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -66,8 +51,8 @@
         <div class="hidden md:block">
           <div class="ml-10 flex items-center space-x-4">
             <a href="about.html" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium">About Us</a>
-            <a href="maintenance.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Maintenance</a>
-            <a href="parts.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Parts & Tools</a>
+            <a href="maintenance.html" class="restricted-link text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Maintenance</a>
+            <a href="parts.html" class="restricted-link text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Parts & Tools</a>
             <a href="contact.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
           </div>
         </div>
@@ -80,84 +65,8 @@
                 <i class="fas fa-search"></i>
               </button>
             </div>
-            
-            <!-- Login/Sign Up Button (Shown if NOT logged in) -->
-            <button id="mainSignInButton" class="ml-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded-full text-sm">Sign in</button>
-            
-            <!-- User Info (Hidden by default, shown if logged in) -->
-            <div id="userInfoDisplay" class="hidden flex items-center ml-4 space-x-4">
-                <span class="text-sm text-gray-300">Welcome, <strong id="usernameDisplay" class="text-white font-semibold"></strong></span>
-                <button id="logoutButton" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-full text-xs font-medium">Sign Out</button>
-            </div>
           </div>  
         </div>
-        
-        <!-- Sign In Modal -->
-        <div class="hidden md:block">
-        <div id="signinpopupBg" class="fixed inset-0 bg-black/70 hidden transition-opacity duration-300"></div>
-        <div id="signinpopup" class="fixed inset-0 flex items-center justify-center hidden p-4">
-            <div class="bg-gray-900 rounded-xl p-6 w-full max-w-xs shadow-2xl transition-transform duration-300 ease-out transform scale-95 md:scale-100">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-2xl font-bold text-white">Sign In</h2>
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white w-8 h-8 flex items-center justify-center rounded-full text-sm transition" id="closeSignInPopup">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-
-                <div id="messageBox" class="hidden p-3 mb-4 rounded-lg text-sm transition duration-300 ease-in-out">
-                    <p id="messageText" class="text-white"></p>
-                </div>
-
-                <form id="loginForm">
-                    <input type="text" id="username" placeholder="Username" required
-                           class="w-full mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition shadow-inner">
-                    <input type="password" id="password" placeholder="Password" required
-                           class="w-full mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition shadow-inner">
-                    <button type="submit" id="loginButton"
-                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-3 rounded-lg transition transform hover:scale-[1.01] shadow-md flex items-center justify-center">
-                        Log In
-                        <div id="loginSpinner" class="hidden spinner"></div>
-                    </button>
-                    <h2 class="text-sm text-gray-400 mt-4 text-center">Don't have an account? <a href="#" id="signupLink" class="text-blue-400 hover:underline transition">Sign Up</a></h2>
-                </form>
-            </div>
-        </div>
-    </div>
-
-        <!-- Sign Up Modal -->
-        <div class="hidden md:block">
-        <div id="signuppopupBg" class="fixed inset-0 bg-black/70 hidden transition-opacity duration-300"></div>
-        <div id="signuppopup" class="fixed inset-0 flex items-center justify-center hidden p-4">
-            <div class="bg-gray-900 rounded-xl p-6 w-full max-w-xs shadow-2xl transition-transform duration-300 ease-out transform scale-95 md:scale-100">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-2xl font-bold text-white">Create Account</h2>
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white w-8 h-8 flex items-center justify-center rounded-full text-sm transition" id="closeSignUpPopup">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                
-                <div id="signUpMessageBox" class="hidden p-3 mb-4 rounded-lg text-sm transition duration-300 ease-in-out">
-                    <p id="signUpMessageText" class="text-white"></p>
-                </div>
-
-                <form id="signUpForm">
-                    <input type="text" id="signUpUsername" placeholder="Username" 
-                           class="w-full mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition shadow-inner" required>
-                    <input type="email" id="signUpEmail" placeholder="Email" 
-                           class="w-full mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition shadow-inner" required>
-                    <input type="password" id="signUpPassword" placeholder="Password" 
-                           class="w-full mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition shadow-inner" required>
-                    <input type="password" id="signUpConfirmPassword" placeholder="Confirm Password" 
-                           class="w-full mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition shadow-inner" required>
-                    <button type="submit" id="signUpButton" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-3 rounded-lg transition transform hover:scale-[1.01] shadow-md flex items-center justify-center">
-                        Sign Up
-                        <div id="signUpSpinner" class="hidden spinner"></div>
-                    </button>
-                    <h2 class="text-sm text-gray-400 mt-4 text-center">Already have an account? <a href="#" id="signInLink" class="text-blue-400 hover:underline transition">Sign In</a></h2>
-                </form>
-            </div>
-        </div>
-    </div>
 
         <div class="-mr-2 flex md:hidden">
           <button type="button" class="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
@@ -435,102 +344,62 @@
     </div>
   </footer>
 
+  <div id="signinpopupBg" class="fixed inset-0 bg-black/70 hidden z-50 transition-opacity duration-300"></div>
+  <div id="signinpopup" class="fixed inset-0 flex items-center justify-center hidden p-4 z-50">
+    <div class="bg-gray-900 rounded-xl p-6 w-full max-w-xs shadow-2xl">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-2xl font-bold text-white">Sign In</h2>
+            <button class="text-white hover:text-gray-300" id="closeSignInPopup"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="messageBox" class="hidden p-3 mb-4 rounded-lg text-sm"></div>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" class="w-full mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <input type="password" id="password" placeholder="Password" class="w-full mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <button type="submit" id="loginButton" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-3 rounded-lg flex justify-center items-center">
+                Log In <div id="loginSpinner" class="hidden spinner"></div>
+            </button>
+            <h2 class="text-sm text-gray-400 mt-4 text-center">Don't have an account? <a href="#" id="signupLink" class="text-blue-400 hover:underline">Sign Up</a></h2>
+        </form>
+    </div>
+  </div>
+
+  <div id="signuppopupBg" class="fixed inset-0 bg-black/70 hidden z-50 transition-opacity duration-300"></div>
+  <div id="signuppopup" class="fixed inset-0 flex items-center justify-center hidden p-4 z-50">
+    <div class="bg-gray-900 rounded-xl p-6 w-full max-w-xs shadow-2xl">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-2xl font-bold text-white">Create Account</h2>
+            <button class="text-white hover:text-gray-300" id="closeSignUpPopup"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="signUpMessageBox" class="hidden p-3 mb-4 rounded-lg text-sm"></div>
+        <form id="signUpForm">
+            <input type="text" id="signUpUsername" placeholder="Username" class="w-full mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <input type="email" id="signUpEmail" placeholder="Email" class="w-full mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <input type="password" id="signUpPassword" placeholder="Password" class="w-full mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <input type="password" id="signUpConfirmPassword" placeholder="Confirm Password" class="w-full mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <button type="submit" id="signUpButton" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-3 rounded-lg flex justify-center items-center">
+                Sign Up <div id="signUpSpinner" class="hidden spinner"></div>
+            </button>
+            <h2 class="text-sm text-gray-400 mt-4 text-center">Already have an account? <a href="#" id="signInLink" class="text-blue-400 hover:underline">Sign In</a></h2>
+        </form>
+    </div>
+  </div>
+
   <script>
     const BASE_URL = 'http://localhost:3000/api'; 
     const LOGIN_API_URL = BASE_URL + '/login'; 
     const REGISTER_API_URL = BASE_URL + '/register'; 
 
     document.addEventListener('DOMContentLoaded', function() {
+      
+      const signinpopup = document.getElementById('signinpopup');
+      const signinpopupBg = document.getElementById('signinpopupBg');
+      const signuppopup = document.getElementById('signuppopup');
+      const signuppopupBg = document.getElementById('signuppopupBg');
+      const messageBox = document.getElementById('messageBox');
+      const signUpMessageBox = document.getElementById('signUpMessageBox');
+      
       const mainSignInButton = document.getElementById('mainSignInButton');
       const logoutButton = document.getElementById('logoutButton');
-      const userInfoDisplay = document.getElementById('userInfoDisplay');
-      const usernameDisplay = document.getElementById('usernameDisplay');
-
-      const signupLink = document.getElementById('signupLink');
-      const signInLink = document.getElementById('signInLink');
-
-      const signinpopupBg = document.getElementById('signinpopupBg');
-      const signinpopup = document.getElementById('signinpopup');
-      const signuppopupBg = document.getElementById('signuppopupBg');
-      const signuppopup = document.getElementById('signuppopup');
-        
-      const closeSignInPopup = document.getElementById('closeSignInPopup');
-      const closeSignUpPopup = document.getElementById('closeSignUpPopup');
-
-      const loginForm = document.getElementById('loginForm');
-      const loginButton = document.getElementById('loginButton');
-      const loginSpinner = document.getElementById('loginSpinner');
-      const messageBox = document.getElementById('messageBox');
-      const usernameInput = document.getElementById('username');
-      const passwordInput = document.getElementById('password');
-
-      const signUpForm = document.getElementById('signUpForm');
-      const signUpButton = document.getElementById('signUpButton');
-      const signUpSpinner = document.getElementById('signUpSpinner');
-      const signUpMessageBox = document.getElementById('signUpMessageBox');
-      const signUpUsernameInput = document.getElementById('signUpUsername');
-      const signUpEmailInput = document.getElementById('signUpEmail');
-      const signUpPasswordInput = document.getElementById('signUpPassword');
-      const signUpConfirmPasswordInput = document.getElementById('signUpConfirmPassword');
-
-      function updateAuthUI(username) {
-          if (username) {
-              mainSignInButton.classList.add('hidden');
-              userInfoDisplay.classList.remove('hidden');
-              usernameDisplay.textContent = username;
-          } else {
-              mainSignInButton.classList.remove('hidden');
-              userInfoDisplay.classList.add('hidden');
-              usernameDisplay.textContent = '';
-          }
-      }
-
-      const savedUsername = localStorage.getItem('username');
-      updateAuthUI(savedUsername);
-
-      function handleLogout() {
-          localStorage.removeItem('token');
-          localStorage.removeItem('username');
-          updateAuthUI(null);
-          console.log("User logged out.");
-      }
-    
-      function toggleButtonState(formId) {
-          const form = document.getElementById(formId);
-          const button = document.getElementById(formId.replace('Form', 'Button'));
-          const inputs = form.querySelectorAll('input[required]');
-          
-          let allFilled = true;
-          inputs.forEach(input => {
-              if (input.value.trim() === '') {
-                  allFilled = false;
-              }
-          });
-          button.disabled = !allFilled;
-          if (allFilled) {
-              button.classList.remove('opacity-50');
-          } else {
-              button.classList.add('opacity-50');
-          }
-      }
-
-      function showMessage(element, text, classNames) {
-          element.textContent = text;
-          element.classList.remove('hidden');
-          element.className = 'p-3 mb-4 rounded-lg text-sm transition duration-300 ease-in-out';
-          classNames.split(' ').forEach(cls => element.classList.add(cls));
-      }
-      
-      usernameInput.addEventListener('input', () => toggleButtonState('loginForm'));
-      passwordInput.addEventListener('input', () => toggleButtonState('loginForm'));
-      signUpUsernameInput.addEventListener('input', () => toggleButtonState('signUpForm'));
-      signUpEmailInput.addEventListener('input', () => toggleButtonState('signUpForm'));
-      signUpPasswordInput.addEventListener('input', () => toggleButtonState('signUpForm'));
-      signUpConfirmPasswordInput.addEventListener('input', () => toggleButtonState('signUpForm'));
-
-      toggleButtonState('loginForm');
-      toggleButtonState('signUpForm');
-
 
       function showModal(popup, bg) {
           bg.classList.remove('hidden');
@@ -538,131 +407,135 @@
       }
 
       function hideModal(popup, bg) {
-          messageBox.classList.add('hidden'); 
-          signUpMessageBox.classList.add('hidden');
-          
-          loginForm.reset();
-          signUpForm.reset();
-          toggleButtonState('loginForm');
-          toggleButtonState('signUpForm');
-
           popup.classList.add('hidden');
           bg.classList.add('hidden');
+          if(messageBox) messageBox.classList.add('hidden');
+          if(signUpMessageBox) signUpMessageBox.classList.add('hidden');
       }
 
-      if (mainSignInButton) {
-          mainSignInButton.addEventListener('click', function() {
+      function showMessage(element, text, classes) {
+          element.textContent = text;
+          element.classList.remove('hidden');
+          element.className = `p-3 mb-4 rounded-lg text-sm ${classes}`;
+      }
+
+      document.addEventListener('click', function(event) {
+        const link = event.target.closest('.restricted-link');
+        if (link) {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                event.preventDefault();
+                event.stopPropagation();
+                showModal(signinpopup, signinpopupBg);
+                if(messageBox) showMessage(messageBox, "Please log in to access this page.", "bg-blue-600 text-white");
+            }
+        }
+      });
+
+      if(mainSignInButton) {
+          mainSignInButton.addEventListener('click', () => showModal(signinpopup, signinpopupBg));
+      }
+      
+      if(logoutButton) {
+          logoutButton.addEventListener('click', () => {
+              localStorage.removeItem('token');
+              localStorage.removeItem('username');
+              window.location.reload(); 
+          });
+      }
+
+      const closeSignInBtn = document.getElementById('closeSignInPopup');
+      if(closeSignInBtn) closeSignInBtn.addEventListener('click', () => hideModal(signinpopup, signinpopupBg));
+      
+      const closeSignUpBtn = document.getElementById('closeSignUpPopup');
+      if(closeSignUpBtn) closeSignUpBtn.addEventListener('click', () => hideModal(signuppopup, signuppopupBg));
+
+      const signupLinkBtn = document.getElementById('signupLink');
+      if(signupLinkBtn) {
+          signupLinkBtn.addEventListener('click', (e) => {
+              e.preventDefault();
+              hideModal(signinpopup, signinpopupBg);
+              showModal(signuppopup, signuppopupBg);
+          });
+      }
+
+      const signinLinkBtn = document.getElementById('signInLink');
+      if(signinLinkBtn) {
+          signinLinkBtn.addEventListener('click', (e) => {
+              e.preventDefault();
+              hideModal(signuppopup, signuppopupBg);
               showModal(signinpopup, signinpopupBg);
           });
       }
 
-      signupLink.addEventListener('click', function(event) {
-          event.preventDefault();
-          hideModal(signinpopup, signinpopupBg);
-          showModal(signuppopup, signuppopupBg);
-      });
-      
-      signInLink.addEventListener('click', function(event) {
-          event.preventDefault();
-          hideModal(signuppopup, signuppopupBg);
-          showModal(signinpopup, signinpopupBg);
-      });
+      const loginForm = document.getElementById('loginForm');
+      if(loginForm) {
+          loginForm.addEventListener('submit', async function(e) {
+              e.preventDefault();
+              const username = document.getElementById('username').value;
+              const password = document.getElementById('password').value;
+              const btn = document.getElementById('loginButton');
+              const spinner = document.getElementById('loginSpinner');
 
-      closeSignInPopup.addEventListener('click', function() {
-          hideModal(signinpopup, signinpopupBg);
-      });
-      closeSignUpPopup.addEventListener('click', function() {
-          hideModal(signuppopup, signuppopupBg);
-      });
-
-      if (logoutButton) {
-          logoutButton.addEventListener('click', handleLogout);
-      }
-      
-      signUpForm.addEventListener('submit', async function(event) {
-          event.preventDefault();
-
-          const username = signUpUsernameInput.value.trim();
-          const email = signUpEmailInput.value.trim();
-          const password = signUpPasswordInput.value.trim();
-          const confirmPassword = signUpConfirmPasswordInput.value.trim();
-
-          signUpMessageBox.classList.add('hidden');
-
-          if (password !== confirmPassword) {
-              showMessage(signUpMessageBox, "Error: Passwords do not match.", "bg-red-700 text-white border border-red-500");
-              return;
-          }
-
-          signUpButton.disabled = true;
-          signUpSpinner.classList.remove('hidden');
-
-          try {
-              const response = await axios.post(REGISTER_API_URL, { username, email, password });
+              btn.disabled = true;
+              spinner.classList.remove('hidden');
               
-              if (response.status === 201) {
-                  showMessage(signUpMessageBox, response.data.message, "bg-green-700 text-white border border-green-500");
+              try {
+                  const response = await axios.post(LOGIN_API_URL, { username, password });
+                  localStorage.setItem('token', response.data.token);
+                  localStorage.setItem('username', response.data.user.username);
+                  showMessage(messageBox, "Login Successful!", "bg-green-600 text-white");
+                  setTimeout(() => {
+                      hideModal(signinpopup, signinpopupBg);
+                      window.location.reload();
+                  }, 1000);
+              } catch (error) {
+                  const msg = error.response ? error.response.data.message : "Server error";
+                  showMessage(messageBox, msg, "bg-red-600 text-white");
+              } finally {
+                  btn.disabled = false;
+                  spinner.classList.add('hidden');
+              }
+          });
+      }
+
+      const signUpForm = document.getElementById('signUpForm');
+      if(signUpForm) {
+          signUpForm.addEventListener('submit', async function(e) {
+              e.preventDefault();
+              const username = document.getElementById('signUpUsername').value;
+              const email = document.getElementById('signUpEmail').value;
+              const password = document.getElementById('signUpPassword').value;
+              const confirm = document.getElementById('signUpConfirmPassword').value;
+              const btn = document.getElementById('signUpButton');
+              const spinner = document.getElementById('signUpSpinner');
+
+              if(password !== confirm) {
+                  showMessage(signUpMessageBox, "Passwords do not match", "bg-red-600 text-white");
+                  return;
+              }
+
+              btn.disabled = true;
+              spinner.classList.remove('hidden');
+
+              try {
+                  await axios.post(REGISTER_API_URL, { username, email, password });
+                  showMessage(signUpMessageBox, "Account created! Please log in.", "bg-green-600 text-white");
                   setTimeout(() => {
                       hideModal(signuppopup, signuppopupBg);
                       showModal(signinpopup, signinpopupBg);
-                      showMessage(messageBox, "Registration successful. Please log in.", "bg-green-700 text-white border border-green-500");
+                      showMessage(messageBox, "Account created! Please log in.", "bg-green-600 text-white");
                   }, 1500);
+              } catch (error) {
+                  const msg = error.response ? error.response.data.message : "Server error";
+                  showMessage(signUpMessageBox, msg, "bg-red-600 text-white");
+              } finally {
+                  btn.disabled = false;
+                  spinner.classList.add('hidden');
               }
+          });
+      }
 
-          } catch (error) {
-              let errorMessage = "Network error. Please check your server connection.";
-              if (error.response) {
-                  errorMessage = `Error: ${error.response.data.message}`;
-              }
-              showMessage(signUpMessageBox, errorMessage, "bg-red-700 text-white border border-red-500");
-              console.error('Sign Up Failed:', error);
-          } finally {
-              signUpButton.disabled = false;
-              signUpSpinner.classList.add('hidden');
-              toggleButtonState('signUpForm');
-          }
-      });
-      
-
-      loginForm.addEventListener('submit', async function(event) {
-          event.preventDefault(); 
-          
-          const username = usernameInput.value.trim();
-          const password = passwordInput.value.trim();
-
-          loginButton.disabled = true;
-          loginSpinner.classList.remove('hidden');
-          messageBox.classList.add('hidden'); 
-
-          try {
-              const response = await axios.post(LOGIN_API_URL, { username, password });
-              
-              const data = response.data;
-              showMessage(messageBox, data.message, "bg-green-700 text-white border border-green-500");
-              
-              localStorage.setItem('token', data.token);
-              localStorage.setItem('username', data.user.username);
-
-              updateAuthUI(data.user.username);
-              setTimeout(() => {
-                  hideModal(signinpopup, signinpopupBg);
-              }, 1000);
-
-          } catch (error) {
-              let errorMessage = "Network error. Please ensure the backend server is running.";
-              if (error.response) {
-                  errorMessage = `Error: ${error.response.data.message}`;
-              }
-              showMessage(messageBox, errorMessage, "bg-red-700 text-white border border-red-500");
-              console.error('Login Failed:', error);
-
-          } finally {
-              loginButton.disabled = false;
-              loginSpinner.classList.add('hidden');
-              toggleButtonState('loginForm');
-          }
-      });
-      
       const mobileMenuButton = document.querySelector('[aria-controls="mobile-menu"]');
       const mobileMenu = document.createElement('div');
       mobileMenu.id = 'mobile-menu';
@@ -670,27 +543,29 @@
       
       const menuLinks = [
         {text: 'About Us', href: 'about.html', active: true},
-        {text: 'Maintenance', href: 'maintenance.html'},
-        {text: 'Parts & Tools', href: 'parts.html'},
+        {text: 'Maintenance', href: 'maintenance.html', restricted: true},
+        {text: 'Parts & Tools', href: 'parts.html', restricted: true},
         {text: 'Contact', href: 'contact.html'}
       ];
-      
+
       menuLinks.forEach(link => {
         const a = document.createElement('a');
         a.href = link.href;
         a.className = 'block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700';
+        if(link.restricted) a.classList.add('restricted-link');
         a.textContent = link.text;
         if (link.active) a.className += ' bg-gray-800';
         mobileMenu.appendChild(a);
       });
-      
       document.body.appendChild(mobileMenu);
       
-      mobileMenuButton.addEventListener('click', function() {
-        const expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !expanded);
-        mobileMenu.classList.toggle('hidden');
-      });
+      if (mobileMenuButton) {
+          mobileMenuButton.addEventListener('click', function() {
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !expanded);
+            mobileMenu.classList.toggle('hidden');
+          });
+      }
     });
   </script>
 </body>
