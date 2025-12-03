@@ -114,8 +114,10 @@ app.post(VEHICLES_API_URL, async (req, res) => {
     try {
         const query = 'INSERT INTO vehicles (user_id, make, image_url, guide_count) VALUES (?, ?, ?, ?)';
         const [result] = await pool.query(query, [userId, make, image_url, guide_count]);
-        res.status(201).json({ id: result.insertId, message: 'Vehicle added' });
+        console.log('Vehicle added:', { id: result.insertId, make });
+        res.status(201).json({ id: result.insertId, make, image_url, guide_count, message: 'Vehicle added' });
     } catch (error) {
+        console.error('Error adding vehicle:', error);
         res.status(500).json({ error: error.message });
     }
 });
@@ -164,4 +166,12 @@ app.delete(`${VEHICLES_API_URL}/:id`, async (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+process.on('uncaughtException', (error) => {
+    console.error('Uncaught Exception:', error);
 });

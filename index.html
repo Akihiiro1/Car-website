@@ -360,25 +360,44 @@
           localStorage.setItem('carsData', JSON.stringify(initialCars));
       }
 
-      async function fetchCars() {
-          const localCars = getLocalCars();
-          if (localCars && localCars.length > 0) {
-              return localCars;
-          }
-          
+        async function fetchCars() {
+          // Start from initial built-in cars to always show them
+          let allCars = Array.isArray(initialCars) ? [...initialCars] : [];
+
+          // Merge in any stored cars (persisted from previous sessions)
           try {
-              const response = await axios.get(VEHICLES_API_URL, { 
-                  params: { _t: Date.now() } 
-              });
-              if (response.data && response.data.length > 0) {
-                  saveLocalCars(response.data);
-                  return response.data;
+            const stored = localStorage.getItem('carsData');
+            if (stored) {
+              const parsed = JSON.parse(stored);
+              if (Array.isArray(parsed)) {
+                parsed.forEach(sc => {
+                  const exists = allCars.some(c => String(c.id) === String(sc.id) || (c.make && sc.make && c.make === sc.make));
+                  if (!exists) allCars.push(sc);
+                });
               }
-          } catch (error) {
-              console.warn("Backend unavailable, using local data.");
+            }
+          } catch (e) {
+            console.error('Error reading stored cars:', e);
           }
-          return localCars;
-      }
+
+          // Fetch backend vehicles and merge (backend should be authoritative for DB entries)
+          try {
+            const response = await axios.get(VEHICLES_API_URL, { params: { _t: Date.now() } });
+            if (response.data && Array.isArray(response.data)) {
+              response.data.forEach(backendCar => {
+                const exists = allCars.some(c => String(c.id) === String(backendCar.id) || (c.make && backendCar.make && c.make === backendCar.make));
+                if (!exists) allCars.push(backendCar);
+              });
+              // persist merged list locally
+              saveLocalCars(allCars);
+            }
+          } catch (error) {
+            console.warn('Backend unavailable, continuing with local/initial cars.');
+          }
+
+          console.debug('fetchCars -> returning', allCars);
+          return allCars;
+        }
 
       async function renderCarCards() {
           const grid = document.getElementById('car-cards-grid');
@@ -387,6 +406,7 @@
           grid.innerHTML = '<div class="col-span-full text-center py-10"><div class="spinner inline-block"></div> Loading vehicles...</div>';
           
           const cars = await fetchCars();
+          console.debug('renderCarCards -> received cars', cars);
           
           grid.innerHTML = '';
           makeSelect.innerHTML = '<option value="">Select Make</option>';
@@ -398,11 +418,12 @@
 
           cars.forEach(car => {
               const option = document.createElement('option');
-              option.value = car.make.toLowerCase().replace(' ', '-');
-              option.textContent = car.make;
+              const makeLabel = (car.make || car.make_name || car.Make || 'Unknown').toString();
+              option.value = makeLabel.toLowerCase().replace(/\s+/g, '-');
+              option.textContent = makeLabel;
               makeSelect.appendChild(option);
 
-              const image = car.image_url || car.image || 'https://via.placeholder.com/400x300?text=Car+Image';
+              const image = car.image_url || car.image || car.imageUrl || 'https://via.placeholder.com/400x300?text=Car+Image';
               const guides = car.guide_count || car.guides || '0 guides';
 
               const card = document.createElement('div');
@@ -414,7 +435,7 @@
                      <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                    </div>
                    <div class="p-4">
-                     <h3 class="text-white font-medium group-hover:text-accent">${car.make}</h3>
+                     <h3 class="text-white font-medium group-hover:text-accent">${makeLabel}</h3>
                      <p class="text-gray-400 text-sm mt-1">${guides}</p>
                    </div>
                 </a>
