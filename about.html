@@ -56,16 +56,21 @@
             <a href="contact.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
           </div>
         </div>
-        
+
         <div class="hidden md:block">
-          <div class="ml-10 flex items-center md:ml-6" id="authContainer">
+          <div class="ml-10 flex items-center md:ml-6 gap-6" id="authContainer">
             <div class="relative">
               <input type="text" placeholder="Search..." class="bg-gray-800 text-white px-4 py-1 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-64">
               <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white">
                 <i class="fas fa-search"></i>
               </button>
             </div>
-          </div>  
+
+            <div id="userInfoDisplay" class="hidden flex items-center space-x-4">
+                <span class="text-sm text-gray-300">Welcome, <strong id="usernameDisplay" class="text-white font-semibold"></strong></span>
+                <button id="logoutButton" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-full text-xs font-medium">Sign Out</button>
+            </div>
+          </div>
         </div>
 
         <div class="-mr-2 flex md:hidden">
@@ -301,8 +306,8 @@
           <h3 class="text-white font-bold mb-4">Quick Links</h3>
           <ul class="space-y-2">
             <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
-            <li><a href="maintenance.html" class="text-gray-400 hover:text-white">Maintenance Guides</a></li>
-            <li><a href="parts.html" class="text-gray-400 hover:text-white">Parts & Tools</a></li>
+            <li><a href="maintenance.html" class="quicklink-restricted text-gray-400 hover:text-white">Maintenance Guides</a></li>
+            <li><a href="parts.html" class="quicklink-restricted text-gray-400 hover:text-white">Parts & Tools</a></li>
             <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
           </ul>
         </div>
@@ -419,8 +424,22 @@
           element.className = `p-3 mb-4 rounded-lg text-sm ${classes}`;
       }
 
+      function updateAuthUI(username) {
+          const userInfoDisplay = document.getElementById('userInfoDisplay');
+          const usernameDisplay = document.getElementById('usernameDisplay');
+          if (username && userInfoDisplay) {
+              userInfoDisplay.classList.remove('hidden');
+              usernameDisplay.textContent = username;
+          } else if (userInfoDisplay) {
+              userInfoDisplay.classList.add('hidden');
+          }
+      }
+
+      const savedUsername = localStorage.getItem('username');
+      updateAuthUI(savedUsername);
+
       document.addEventListener('click', function(event) {
-        const link = event.target.closest('.restricted-link');
+        const link = event.target.closest('.restricted-link, .quicklink-restricted');
         if (link) {
             const token = localStorage.getItem('token');
             if (!token) {
@@ -484,10 +503,10 @@
                   const response = await axios.post(LOGIN_API_URL, { username, password });
                   localStorage.setItem('token', response.data.token);
                   localStorage.setItem('username', response.data.user.username);
+                  updateAuthUI(response.data.user.username);
                   showMessage(messageBox, "Login Successful!", "bg-green-600 text-white");
                   setTimeout(() => {
                       hideModal(signinpopup, signinpopupBg);
-                      window.location.reload();
                   }, 1000);
               } catch (error) {
                   const msg = error.response ? error.response.data.message : "Server error";

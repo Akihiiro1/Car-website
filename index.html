@@ -130,9 +130,9 @@
         <div class="mt-6 pt-6 border-t border-gray-800">
           <h3 class="text-lg font-medium text-white mb-3">Popular Categories</h3>
           <ul class="space-y-2">
-            <li><a href="oil-change.html" class="restricted-link text-gray-300 hover:text-accent transition-colors flex items-center"><i class="fas fa-oil-can text-xs mr-2"></i> Oil Change</a></li>
-            <li><a href="battery-replacement.html" class="restricted-link text-gray-300 hover:text-accent transition-colors flex items-center"><i class="fas fa-bolt text-xs mr-2"></i> Battery Replacement</a></li>
-            <li><a href="tire-rotation.html" class="restricted-link text-gray-300 hover:text-accent transition-colors flex items-center"><i class="fas fa-tire text-xs mr-2"></i> Tire Rotation</a></li>
+            <li><a href="services/oil-change.html" class="restricted-link text-gray-300 hover:text-accent transition-colors flex items-center"><i class="fas fa-oil-can text-xs mr-2"></i> Oil Change</a></li>
+            <li><a href="services/battery-replacement.html" class="restricted-link text-gray-300 hover:text-accent transition-colors flex items-center"><i class="fas fa-bolt text-xs mr-2"></i> Battery Replacement</a></li>
+            <li><a href="services/tire-rotation.html" class="restricted-link text-gray-300 hover:text-accent transition-colors flex items-center"><i class="fas fa-ring text-xs mr-2"></i> Tire Rotation</a></li>
           </ul>
         </div>
       </aside>
@@ -165,20 +165,20 @@
         <div class="mt-12 bg-dark rounded-xl p-6 border border-gray-800">
             <h2 class="text-2xl font-bold text-white mb-4 flex items-center"><i class="fas fa-fire text-accent mr-3"></i> Trending Guides</h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <div class="flex items-start space-x-4 cursor-pointer hover:bg-gray-800 p-2 rounded restricted-link">
+                <a href="services/oil-change.html" class="flex items-start space-x-4 cursor-pointer hover:bg-gray-800 p-2 rounded restricted-link transition">
                     <div class="flex-shrink-0 bg-gray-800 p-3 rounded-lg"><i class="fas fa-oil-can text-accent text-xl"></i></div>
                     <div>
                         <h3 class="text-lg font-medium text-white">How to Change Your Oil</h3>
                         <p class="text-gray-400 mt-1">Learn the proper way to change your engine oil.</p>
                     </div>
-                </div>
-                <div class="flex items-start space-x-4 cursor-pointer hover:bg-gray-800 p-2 rounded restricted-link">
+                </a>
+                <a href="services/battery-replacement.html" class="flex items-start space-x-4 cursor-pointer hover:bg-gray-800 p-2 rounded restricted-link transition">
                     <div class="flex-shrink-0 bg-gray-800 p-3 rounded-lg"><i class="fas fa-bolt text-accent text-xl"></i></div>
                     <div>
                         <h3 class="text-lg font-medium text-white">Battery Replacement</h3>
                         <p class="text-gray-400 mt-1">Safely replace your car battery at home.</p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
 
@@ -361,10 +361,8 @@
       }
 
         async function fetchCars() {
-          // Start from initial built-in cars to always show them
           let allCars = Array.isArray(initialCars) ? [...initialCars] : [];
 
-          // Merge in any stored cars (persisted from previous sessions)
           try {
             const stored = localStorage.getItem('carsData');
             if (stored) {
@@ -380,7 +378,6 @@
             console.error('Error reading stored cars:', e);
           }
 
-          // Fetch backend vehicles and merge (backend should be authoritative for DB entries)
           try {
             const response = await axios.get(VEHICLES_API_URL, { params: { _t: Date.now() } });
             if (response.data && Array.isArray(response.data)) {
@@ -388,7 +385,7 @@
                 const exists = allCars.some(c => String(c.id) === String(backendCar.id) || (c.make && backendCar.make && c.make === backendCar.make));
                 if (!exists) allCars.push(backendCar);
               });
-              // persist merged list locally
+
               saveLocalCars(allCars);
             }
           } catch (error) {
@@ -429,7 +426,7 @@
               const card = document.createElement('div');
               card.className = "vehicle-card bg-dark rounded-lg overflow-hidden border border-gray-800 hover:border-accent/30 group relative";
               card.innerHTML = `
-                <a href="${car.make.toLowerCase()}.html" class="block">
+                <a href="brands/${car.make.toLowerCase()}.html" class="block">
                    <div class="relative overflow-hidden h-40">
                      <img src="${image}" alt="${car.make}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://via.placeholder.com/400x300?text=Car+Image'">
                      <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -440,7 +437,6 @@
                    </div>
                 </a>
                 
-                <!-- CRUD Actions -->
                 <div class="card-actions absolute top-2 right-2 flex gap-2">
                     <button class="edit-btn bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full shadow-lg text-xs" 
                         data-id="${car.id}" 

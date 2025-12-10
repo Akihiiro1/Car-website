@@ -49,20 +49,25 @@
         
         <div class="hidden md:block">
           <div class="ml-10 flex items-center space-x-4">
-            <a href="about.html" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium">About Us</a>
-            <a href="maintenance.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Maintenance</a>
+            <a href="about.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About Us</a>
+            <a href="maintenance.html" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium">Maintenance</a>
             <a href="parts.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Parts & Tools</a>
             <a href="contact.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
           </div>
         </div>
         
         <div class="hidden md:block">
-          <div class="ml-4 flex items-center md:ml-6">
+          <div class="ml-4 flex items-center md:ml-6 gap-6">
             <div class="relative">
               <input type="text" placeholder="Search..." class="bg-gray-800 text-white px-4 py-1 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-64">
               <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white">
                 <i class="fas fa-search"></i>
               </button>
+            </div>
+
+            <div id="userInfoDisplay" class="hidden flex items-center space-x-4">
+                <span class="text-sm text-gray-300">Welcome, <strong id="usernameDisplay" class="text-white font-semibold"></strong></span>
+                <button id="logoutButton" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-full text-xs font-medium">Sign Out</button>
             </div>
           </div>
         </div>
@@ -91,47 +96,47 @@
         </h2>
         <ul class="space-y-2">
           <li>
-            <a href="#battery" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
+            <a href="services/battery-replacement.html" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
               <i class="fas fa-battery-three-quarters mr-2 text-blue-400"></i> Battery Replacement
             </a>
           </li>
           <li>
-            <a href="#oil" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
+            <a href="services/oil-change.html" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
               <i class="fas fa-oil-can mr-2 text-blue-400"></i> Oil Change
             </a>
           </li>
           <li>
-            <a href="#brakes" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
+            <a href="services/brake-service.html" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
               <i class="fas fa-stop-circle mr-2 text-blue-400"></i> Brake Service
             </a>
           </li>
           <li>
-            <a href="#tires" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
-              <i class="fas fa-tire mr-2 text-blue-400"></i> Tire Rotation
+            <a href="services/tire-rotation.html" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
+              <i class="fas fa-ring mr-2 text-blue-400"></i> Tire Rotation
             </a>
           </li>
           <li>
-            <a href="#fluids" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
+            <a href="services/fluid-checks.html" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
               <i class="fas fa-tint mr-2 text-blue-400"></i> Fluid Checks
             </a>
           </li>
           <li>
-            <a href="#engine" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
+            <a href="services/engine-tuning.html" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
               <i class="fas fa-cogs mr-2 text-blue-400"></i> Engine Tuning
             </a>
           </li>
           <li>
-            <a href="#filters" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
+            <a href="services/air-filters.html" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
               <i class="fas fa-filter mr-2 text-blue-400"></i> Air Filters
             </a>
           </li>
           <li>
-            <a href="#lights" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
+            <a href="services/headlight-replacement.html" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
               <i class="fas fa-lightbulb mr-2 text-blue-400"></i> Headlight Replacement
             </a>
           </li>
           <li>
-            <a href="#belts" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
+            <a href="services/belt-replacement.html" class="sidebar-item block px-3 py-2 rounded text-gray-300 hover:text-white transition flex items-center">
               <i class="fas fa-bolt mr-2 text-blue-400"></i> Belt Replacement
             </a>
           </li>
@@ -156,15 +161,15 @@
           <p class="text-gray-400 mb-4">Comprehensive guides to keep your vehicle running smoothly. Filter by difficulty level or maintenance type.</p>
           
           <div class="flex flex-wrap gap-2 mb-6">
-            <button class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">All</button>
-            <button class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm font-medium hover:bg-gray-700">Beginner</button>
-            <button class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm font-medium hover:bg-gray-700">Intermediate</button>
-            <button class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm font-medium hover:bg-gray-700">Advanced</button>
-            <button class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm font-medium hover:bg-gray-700">Quick Fixes</button>
+            <button onclick="filterCards('all')" class="filter-btn bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium" data-filter="all">All</button>
+            <button onclick="filterCards('easy')" class="filter-btn bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm font-medium hover:bg-gray-700" data-filter="easy">Beginner</button>
+            <button onclick="filterCards('medium')" class="filter-btn bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm font-medium hover:bg-gray-700" data-filter="medium">Intermediate</button>
+            <button onclick="filterCards('hard')" class="filter-btn bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm font-medium hover:bg-gray-700" data-filter="hard">Advanced</button>
+            <button onclick="filterCards('quick')" class="filter-btn bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm font-medium hover:bg-gray-700" data-filter="quick">Quick Fixes</button>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div id="battery" class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden card-hover transition duration-300">
+            <a href="services/battery-replacement.html" class="maintenance-card bg-gray-800 rounded-xl border border-gray-700 overflow-hidden card-hover transition duration-300 cursor-pointer" data-difficulty="easy">
               <div class="relative">
                 <img src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg" alt="Battery Replacement" class="w-full h-48 object-cover">
                 <span class="absolute top-2 right-2 bg-gray-900 px-2 py-1 rounded-full text-xs font-semibold text-gray-300 shadow flex items-center">
@@ -187,14 +192,14 @@
                     <span class="bg-blue-900 text-blue-300 px-2 py-1 rounded text-xs">DIY</span>
                     <span class="bg-green-900 text-green-300 px-2 py-1 rounded text-xs">Essential</span>
                   </div>
-                  <a href="battery-replacement.html" class="text-blue-400 hover:text-blue-300 font-medium flex items-center">
+                  <span class="text-blue-400 hover:text-blue-300 font-medium flex items-center">
                     View Guide <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
             
-            <div id="oil" class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden card-hover transition duration-300">
+            <a href="services/oil-change.html" class="maintenance-card bg-gray-800 rounded-xl border border-gray-700 overflow-hidden card-hover transition duration-300 cursor-pointer" data-difficulty="medium">
               <div class="relative">
                 <img src="https://images.pexels.com/photos/4480505/pexels-photo-4480505.jpeg" alt="Oil Change" class="w-full h-48 object-cover">
                 <span class="absolute top-2 right-2 bg-gray-900 px-2 py-1 rounded-full text-xs font-semibold text-gray-300 shadow flex items-center">
@@ -217,14 +222,14 @@
                     <span class="bg-blue-900 text-blue-300 px-2 py-1 rounded text-xs">DIY</span>
                     <span class="bg-purple-900 text-purple-300 px-2 py-1 rounded text-xs">Regular</span>
                   </div>
-                  <a href="oil-change.html" class="text-blue-400 hover:text-blue-300 font-medium flex items-center">
+                  <span class="text-blue-400 hover:text-blue-300 font-medium flex items-center">
                     View Guide <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
             
-            <div id="brakes" class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden card-hover transition duration-300">
+            <a href="services/brake-service.html" class="maintenance-card bg-gray-800 rounded-xl border border-gray-700 overflow-hidden card-hover transition duration-300 cursor-pointer" data-difficulty="hard">
               <div class="relative">
                 <img src="https://images.pexels.com/photos/3807319/pexels-photo-3807319.jpeg" alt="Brake Service" class="w-full h-48 object-cover">
                 <span class="absolute top-2 right-2 bg-gray-900 px-2 py-1 rounded-full text-xs font-semibold text-gray-300 shadow flex items-center">
@@ -247,16 +252,16 @@
                     <span class="bg-yellow-900 text-yellow-300 px-2 py-1 rounded text-xs">Advanced</span>
                     <span class="bg-red-900 text-red-300 px-2 py-1 rounded text-xs">Safety</span>
                   </div>
-                  <a href="brake-service.html" class="text-blue-400 hover:text-blue-300 font-medium flex items-center">
+                  <span class="text-blue-400 hover:text-blue-300 font-medium flex items-center">
                     View Guide <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
             
-            <div id="tires" class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden card-hover transition duration-300">
+            <a href="services/tire-rotation.html" class="maintenance-card bg-gray-800 rounded-xl border border-gray-700 overflow-hidden card-hover transition duration-300 cursor-pointer" data-difficulty="easy">
               <div class="relative">
-                <img src="https://images.pexels.com/photos/2684219/pexels-photo-2684219.jpeg" alt="Tile Rotation" class="w-full h-48 object-cover">
+                <img src="https://images.pexels.com/photos/2684219/pexels-photo-2684219.jpeg" alt="Tire Rotation" class="w-full h-48 object-cover">
                 <span class="absolute top-2 right-2 bg-gray-900 px-2 py-1 rounded-full text-xs font-semibold text-gray-300 shadow flex items-center">
                   <i class="fas fa-clock mr-1 text-blue-400"></i> 30-45 min
                 </span>
@@ -277,14 +282,14 @@
                     <span class="bg-blue-900 text-blue-300 px-2 py-1 rounded text-xs">DIY</span>
                     <span class="bg-purple-900 text-purple-300 px-2 py-1 rounded text-xs">Regular</span>
                   </div>
-                  <a href="tire-rotation.html" class="text-blue-400 hover:text-blue-300 font-medium flex items-center">
+                  <span class="text-blue-400 hover:text-blue-300 font-medium flex items-center">
                     View Guide <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
             
-            <div id="fluids" class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden card-hover transition duration-300">
+            <a href="services/fluid-checks.html" class="maintenance-card bg-gray-800 rounded-xl border border-gray-700 overflow-hidden card-hover transition duration-300 cursor-pointer" data-difficulty="easy">
               <div class="relative">
                 <img src="https://images.pexels.com/photos/190574/pexels-photo-190574.jpeg" alt="Fluid Checks" class="w-full h-48 object-cover">
                 <span class="absolute top-2 right-2 bg-gray-900 px-2 py-1 rounded-full text-xs font-semibold text-gray-300 shadow flex items-center">
@@ -307,14 +312,14 @@
                     <span class="bg-blue-900 text-blue-300 px-2 py-1 rounded text-xs">DIY</span>
                     <span class="bg-green-900 text-green-300 px-2 py-1 rounded text-xs">Essential</span>
                   </div>
-                  <a href="fluid-checks.html" class="text-blue-400 hover:text-blue-300 font-medium flex items-center">
+                  <span class="text-blue-400 hover:text-blue-300 font-medium flex items-center">
                     View Guide <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
             
-            <div id="engine" class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden card-hover transition duration-300">
+            <a href="services/engine-tuning.html" class="maintenance-card bg-gray-800 rounded-xl border border-gray-700 overflow-hidden card-hover transition duration-300 cursor-pointer" data-difficulty="hard">
               <div class="relative">
                 <img src="https://images.pexels.com/photos/4489732/pexels-photo-4489732.jpeg" alt="Engine Tuning" class="w-full h-48 object-cover">
                 <span class="absolute top-2 right-2 bg-gray-900 px-2 py-1 rounded-full text-xs font-semibold text-gray-300 shadow flex items-center">
@@ -337,12 +342,12 @@
                     <span class="bg-yellow-900 text-yellow-300 px-2 py-1 rounded text-xs">Advanced</span>
                     <span class="bg-pink-900 text-pink-300 px-2 py-1 rounded text-xs">Performance</span>
                   </div>
-                  <a href="engine-tuning.html" class="text-blue-400 hover:text-blue-300 font-medium flex items-center">
+                  <span class="text-blue-400 hover:text-blue-300 font-medium flex items-center">
                     View Guide <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
         
@@ -458,6 +463,54 @@
   </footer>
 
   <script>
+    function updateAuthUI(username) {
+        const userInfoDisplay = document.getElementById('userInfoDisplay');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        if (username && userInfoDisplay) {
+            userInfoDisplay.classList.remove('hidden');
+            usernameDisplay.textContent = username;
+        } else if (userInfoDisplay) {
+            userInfoDisplay.classList.add('hidden');
+        }
+    }
+
+    const savedUsername = localStorage.getItem('username');
+    updateAuthUI(savedUsername);
+
+    const logoutButton = document.getElementById('logoutButton');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            updateAuthUI(null);
+            window.location.reload();
+        });
+    }
+
+    function filterCards(difficulty) {
+        const cards = document.querySelectorAll('.maintenance-card');
+        const buttons = document.querySelectorAll('.filter-btn');
+        
+        buttons.forEach(btn => {
+            if (btn.dataset.filter === difficulty) {
+                btn.classList.remove('bg-gray-800', 'text-gray-300');
+                btn.classList.add('bg-blue-600', 'text-white');
+            } else {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('bg-gray-800', 'text-gray-300');
+            }
+        });
+        
+        cards.forEach(card => {
+            const cardDifficulty = card.dataset.difficulty;
+            if (difficulty === 'all' || cardDifficulty === difficulty) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
     document.querySelector('.search-input').addEventListener('keyup', function(e) {
       if (e.key === 'Enter') {
         const searchTerm = this.value.toLowerCase();

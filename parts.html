@@ -206,12 +206,17 @@
           </div>
         </div>
         <div class="hidden md:block">
-          <div class="ml-4 flex items-center md:ml-6">
+          <div class="ml-4 flex items-center md:ml-6 gap-6">
             <div class="relative">
               <input type="text" placeholder="Search..." class="bg-gray-800 text-white px-4 py-1 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-64">
               <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white">
                 <i class="fas fa-search"></i>
               </button>
+            </div>
+
+            <div id="userInfoDisplay" class="hidden flex items-center space-x-4">
+                <span class="text-sm text-gray-300">Welcome, <strong id="usernameDisplay" class="text-white font-semibold"></strong></span>
+                <button id="logoutButton" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-full text-xs font-medium">Sign Out</button>
             </div>
           </div>
         </div>
@@ -1023,6 +1028,30 @@
   </footer>
 
   <script>
+    function updateAuthUI(username) {
+        const userInfoDisplay = document.getElementById('userInfoDisplay');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        if (username && userInfoDisplay) {
+            userInfoDisplay.classList.remove('hidden');
+            usernameDisplay.textContent = username;
+        } else if (userInfoDisplay) {
+            userInfoDisplay.classList.add('hidden');
+        }
+    }
+
+    const savedUsername = localStorage.getItem('username');
+    updateAuthUI(savedUsername);
+
+    const logoutButton = document.getElementById('logoutButton');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            updateAuthUI(null);
+            window.location.reload();
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const searchInput = document.getElementById('search-input');
       const searchButton = document.getElementById('search-button');
